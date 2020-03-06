@@ -11,19 +11,24 @@ logger.setLevel(logging.INFO)
 def lambda_handler(event, context):
     username = event['username']
     user_email = event['useremail']
+    user_location = event['location']
+    user_project = event['project']
     # user_pwd = event['userpwd']
 
-    tags = [{'Key': 'UserEmail', 'Value': user_email}]
+    tags = [{'Key': 'UserEmail', 'Value': user_email},
+            {'Key': 'Location', 'Value': user_location},
+            {'Key': 'Project', 'Value': user_project}]
 
     iam_client = boto3.client('iam')
     logger.info("****USERS ADDED*****:" + username)
     response = iam_client.create_user(UserName=username, Tags=tags)
     logger.info(response)
     logger.info(generate_password(username))
+    return "User Created: "+username
 
 
 def random_password(stringLength):
-    alphabet = string.ascii_letters + string.digits + "," + "!" + "?" + "*"
+    alphabet = string.ascii_letters
     password = random.choice(string.ascii_lowercase)
     password += random.choice(string.ascii_uppercase)
     password += random.choice(string.digits)
@@ -42,7 +47,6 @@ def generate_password(user):
     password = random_password(14)
     returned_profile = login_profile.create(
         Password=password, PasswordResetRequired=True)
-    logger.info(user + ";" + password)
     return returned_profile
 
 
