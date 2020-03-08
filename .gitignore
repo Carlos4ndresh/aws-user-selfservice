@@ -31,4 +31,5 @@ override.tf.json
 # exclude python venv
 functions/venv
 # exclude vscode thingys
-.vscode
+.vscode/
+.vscode/*
