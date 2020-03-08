@@ -23,8 +23,10 @@ def lambda_handler(event, context):
     logger.info("****USERS ADDED*****:" + username)
     response = iam_client.create_user(UserName=username, Tags=tags)
     logger.info(response)
-    logger.info(generate_password(username))
-    return "User Created: "+username
+    password = generate_password(username)
+    assign_user_to_group(username)
+    # We have to jsonify this
+    return "User Created: {}, temporal password {}".format(username, password)
 
 
 def random_password(stringLength):
@@ -45,14 +47,26 @@ def generate_password(user):
     iam_client = boto3.resource('iam')
     login_profile = iam_client.LoginProfile(user)
     password = random_password(14)
-    returned_profile = login_profile.create(
-        Password=password, PasswordResetRequired=True)
-    return returned_profile
+    try:
+        returned_profile = login_profile.create(
+            Password=password, PasswordResetRequired=True)
+        logger.info(returned_profile)
+    except Exception as e:
+        logger.info(password)
+        logger.exception(e)
+    # return returned_profile
+    return password
 
 
 def assign_user_to_group(user):
-    pass
+    group_name = get_unprivileged_group()
+    response = group_name.add_user(UserName=user)
+    logger.info(response)
 
+
+def get_unprivileged_group():
+    iam = boto3.resource('iam')
+    return iam.Group('non_privileged_users')
 
 # Future queue or DynamoDB to queue
 
