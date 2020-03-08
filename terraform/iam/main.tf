@@ -40,6 +40,41 @@ resource "aws_iam_policy" "UserMFASelfmanagement" {
   policy = file("./iam/policies/Non_PrivilegedUsers_MFA_Policy.json")
 }
 
+resource "aws_iam_policy" "user_creation_lambda_execution_policy" {
+  name        = "user_creation_lambda_execution_policy"
+  path        = "/"
+  description = "Lambda execution policy for the user creation lambda function"
+
+  policy = file("./iam/policies/user_creation_lambda_iam_policy.json")
+}
+
+resource "aws_iam_role" "user_creation_lambda_role" {
+  name = "user_creation_lambda_role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": [
+          "lambda.amazonaws.com"
+        ]
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "user_creation_lambda_role_attachment" {
+  role       =  aws_iam_role.user_creation_lambda_role.name
+  policy_arn =  aws_iam_policy.user_creation_lambda_execution_policy.arn
+}
+
 resource "aws_iam_group_policy_attachment" "NonPrivilegedAttachment" {
     group = aws_iam_group.non_privileged.id
     policy_arn = aws_iam_policy.UserSelfManagement.arn

@@ -7,3 +7,8 @@ provider "aws" {
 module "iam" {
     source = "./iam/"   
 }
+
+module "lambda" {
+    source = "./lambda"
+    user_creation_lambda_role = module.iam.user_creation_lambda_role
+}

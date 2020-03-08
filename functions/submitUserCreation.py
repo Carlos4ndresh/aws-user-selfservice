@@ -50,6 +50,12 @@ def generate_password(user):
     return returned_profile
 
 
+def assign_user_to_group(user):
+    pass
+
+
 # Future queue or DynamoDB to queue
+
+
 def put_message_in_queue(message):
     pass
