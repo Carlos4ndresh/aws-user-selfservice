@@ -20,6 +20,17 @@ user_names = {
       site = "aguacatala",
       type = "intern"
     }
-  }
+  }  
 
+  "alejandro.velasquez" = {
+    force_destroy = true
+    email_address     = "alejandro.velasquez@endava.com"
+    group_memberships = [ "non_privileged_users", "interns" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "intern"
+    }
+  }
 }
+
