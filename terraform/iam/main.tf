@@ -85,3 +85,22 @@ resource "aws_iam_group_policy_attachment" "NonPrivilegedMFAAttachment" {
     policy_arn = aws_iam_policy.UserMFASelfmanagement.arn
 }
 
+# Users creation (testing)
+
+resource "aws_iam_user" "non_privileged_user" {
+  for_each = var.user_names
+
+  name          = each.key
+  force_destroy = each.value["force_destroy"]
+
+  tags = merge(each.value["tags"], { Provisioner : var.provisioner, EmailAddress : each.value["email_address"] })
+}
+
+resource "aws_iam_user_group_membership" "group_membership" {
+  for_each = var.user_names
+
+  user   = each.key
+  groups = each.value["group_memberships"]
+
+  depends_on = [ aws_iam_user.non_privileged_user ]
+}

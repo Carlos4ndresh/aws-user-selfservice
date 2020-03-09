@@ -6,6 +6,7 @@ provider "aws" {
 
 module "iam" {
     source = "./iam/"   
+    user_names = var.user_names
 }
 
 module "lambda" {
