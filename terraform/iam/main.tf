@@ -1,3 +1,5 @@
+# Group Creation
+
 resource "aws_iam_group" "interns" {
   name = "interns"
 }
@@ -18,10 +20,15 @@ resource "aws_iam_group" "non_privileged" {
     name = "non_privileged_users"
 }
 
-# resource "aws_iam_group" "qa_engineers" {
-#     name = "qa_engineers"
-#     path = "/users/qa_engineers/"
-# }
+resource "aws_iam_group" "qa_engineers" {
+    name = "qa_engineers"
+}
+
+resource "aws_iam_group" "devops_engineers" {
+    name = "devops_engineers"
+}
+
+# Policy Creation
 
 resource "aws_iam_policy" "UserSelfManagement" {
   name        = "IAMUser_SelfManagement"
@@ -48,6 +55,17 @@ resource "aws_iam_policy" "user_creation_lambda_execution_policy" {
   policy = file("./iam/policies/user_creation_lambda_iam_policy.json")
 }
 
+## Temporary policies
+resource "aws_iam_policy" "temporary_circleciworkshop_policy" {
+  name        = "temporary_circleciworkshop_policy"
+  path        = "/"
+  description = "Temporary permissions for the CircleCI workshop. Responsible: william.munoz"
+
+  policy = file("./iam/policies/Temporary_CircleCIWorkshop_Services.json")
+}
+
+# Role Creation
+
 resource "aws_iam_role" "user_creation_lambda_role" {
   name = "user_creation_lambda_role"
 
@@ -70,6 +88,9 @@ resource "aws_iam_role" "user_creation_lambda_role" {
 EOF
 }
 
+
+# Policy Attachment section
+
 resource "aws_iam_role_policy_attachment" "user_creation_lambda_role_attachment" {
   role       =  aws_iam_role.user_creation_lambda_role.name
   policy_arn =  aws_iam_policy.user_creation_lambda_execution_policy.arn
@@ -83,6 +104,18 @@ resource "aws_iam_group_policy_attachment" "NonPrivilegedAttachment" {
 resource "aws_iam_group_policy_attachment" "NonPrivilegedMFAAttachment" {
     group = aws_iam_group.non_privileged.id
     policy_arn = aws_iam_policy.UserMFASelfmanagement.arn
+}
+
+## Temporary policies attachment
+
+resource "aws_iam_group_policy_attachment" "TemporaryCircleCIPolicyAttachmentInterns" {
+    group = aws_iam_group.interns-devops.id
+    policy_arn = aws_iam_policy.temporary_circleciworkshop_policy.arn
+}
+
+resource "aws_iam_group_policy_attachment" "TemporaryCircleCIPolicyAttachmentDevOps" {
+    group = aws_iam_group.devops_engineers.id
+    policy_arn = aws_iam_policy.temporary_circleciworkshop_policy.arn
 }
 
 # Users creation (testing)
@@ -104,3 +137,6 @@ resource "aws_iam_user_group_membership" "group_membership" {
 
   depends_on = [ aws_iam_user.non_privileged_user ]
 }
+
+## User's profiles and autopassword generation (testing)
+
