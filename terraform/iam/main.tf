@@ -55,6 +55,11 @@ resource "aws_iam_policy" "user_creation_lambda_execution_policy" {
   policy = file("./iam/policies/user_creation_lambda_iam_policy.json")
 }
 
+data "aws_iam_policy" "AWSCodeCommitFullAccess" {
+  arn = "arn:aws:iam::aws:policy/AWSCodeCommitFullAccess"
+}
+
+
 ## Temporary policies
 resource "aws_iam_policy" "temporary_circleciworkshop_policy" {
   name        = "temporary_circleciworkshop_policy"
@@ -104,6 +109,16 @@ resource "aws_iam_group_policy_attachment" "NonPrivilegedAttachment" {
 resource "aws_iam_group_policy_attachment" "NonPrivilegedMFAAttachment" {
     group = aws_iam_group.non_privileged.id
     policy_arn = aws_iam_policy.UserMFASelfmanagement.arn
+}
+
+resource "aws_iam_group_policy_attachment" "CodeCommitFullAccessAttachment_DevOps" {
+  group      = aws_iam_group.devops_engineers.id
+  policy_arn = data.aws_iam_policy.AWSCodeCommitFullAccess.arn
+}
+
+resource "aws_iam_group_policy_attachment" "CodeCommitFullAccessAttachment_DevOpsInterns" {
+  group      = aws_iam_group.interns-devops.id
+  policy_arn = data.aws_iam_policy.AWSCodeCommitFullAccess.arn
 }
 
 ## Temporary policies attachment
