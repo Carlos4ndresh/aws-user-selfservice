@@ -15,3 +15,10 @@ output "user_arns" {
     user_name.name => user_name.arn
   }
 }
+
+# output "user_password" {
+#   value = {
+#     for user_name in aws_iam_user_login_profile.user_logins:
+#     user_name.user => user_name.encrypted_password
+#   }
+# }

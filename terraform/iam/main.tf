@@ -140,3 +140,11 @@ resource "aws_iam_user_group_membership" "group_membership" {
 
 ## User's profiles and autopassword generation (testing)
 
+# resource "aws_iam_user_login_profile" "user_logins" {
+#   for_each = var.user_names
+#   user    = each.key
+#   pgp_key = "keybase:carlosandresh"
+#   password_length = 20
+#   password_reset_required = true
+# }
+
