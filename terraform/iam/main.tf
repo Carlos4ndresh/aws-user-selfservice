@@ -129,7 +129,7 @@ resource "aws_iam_group_policy_attachment" "CodeCommitFullAccessAttachment_DevOp
 }
 
 resource "aws_iam_group_policy_attachment" "CodeCommitRestrictedAttachment_Interns" {
-  group      = aws_iam_group.interns
+  group      = aws_iam_group.interns.id
   policy_arn = aws_iam_policy.Interns_CodeCommit_Policy.arn
 }
 
