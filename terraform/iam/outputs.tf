@@ -16,6 +16,15 @@ output "user_arns" {
   }
 }
 
+output "user_groups" {
+  value = {
+    for user_name in aws_iam_user_group_membership.group_membership:
+    user_name.user => user_name.groups
+  }
+}
+
+
+
 # output "user_password" {
 #   value = {
 #     for user_name in aws_iam_user_login_profile.user_logins:

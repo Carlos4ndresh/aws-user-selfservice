@@ -59,7 +59,6 @@ data "aws_iam_policy" "AWSCodeCommitFullAccess" {
   arn = "arn:aws:iam::aws:policy/AWSCodeCommitFullAccess"
 }
 
-
 ## Temporary policies
 resource "aws_iam_policy" "temporary_circleciworkshop_policy" {
   name        = "temporary_circleciworkshop_policy"
@@ -123,10 +122,10 @@ resource "aws_iam_group_policy_attachment" "CodeCommitFullAccessAttachment_DevOp
 
 ## Temporary policies attachment
 
-resource "aws_iam_group_policy_attachment" "TemporaryCircleCIPolicyAttachmentInterns" {
-    group = aws_iam_group.interns-devops.id
-    policy_arn = aws_iam_policy.temporary_circleciworkshop_policy.arn
-}
+# resource "aws_iam_group_policy_attachment" "TemporaryCircleCIPolicyAttachmentInterns" {
+#     group = aws_iam_group.interns-devops.id
+#     policy_arn = aws_iam_policy.temporary_circleciworkshop_policy.arn
+# }
 
 resource "aws_iam_group_policy_attachment" "TemporaryCircleCIPolicyAttachmentDevOps" {
     group = aws_iam_group.devops_engineers.id
