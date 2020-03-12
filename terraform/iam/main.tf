@@ -55,6 +55,14 @@ resource "aws_iam_policy" "user_creation_lambda_execution_policy" {
   policy = file("./iam/policies/user_creation_lambda_iam_policy.json")
 }
 
+resource "aws_iam_policy" "Interns_CodeCommit_Policy" {
+  name        = "Interns_CodeCommit_Policy"
+  path        = "/"
+  description = "CodeCommit Policy for non devops interns"
+
+  policy = file("./iam/policies/Interns_CodeCommit_Policy.json")
+}
+
 data "aws_iam_policy" "AWSCodeCommitFullAccess" {
   arn = "arn:aws:iam::aws:policy/AWSCodeCommitFullAccess"
 }
@@ -118,6 +126,11 @@ resource "aws_iam_group_policy_attachment" "CodeCommitFullAccessAttachment_DevOp
 resource "aws_iam_group_policy_attachment" "CodeCommitFullAccessAttachment_DevOpsInterns" {
   group      = aws_iam_group.interns-devops.id
   policy_arn = data.aws_iam_policy.AWSCodeCommitFullAccess.arn
+}
+
+resource "aws_iam_group_policy_attachment" "CodeCommitRestrictedAttachment_Interns" {
+  group      = aws_iam_group.interns
+  policy_arn = aws_iam_policy.Interns_CodeCommit_Policy.arn
 }
 
 ## Temporary policies attachment
