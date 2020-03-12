@@ -154,6 +154,17 @@ user_names = {
     }
   }
 
+  "test" = {
+    force_destroy = true
+    email_address     = "carlos.herrera@endava.com"
+    group_memberships = [ "non_privileged_users", "interns" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "milla de oro",
+      type = "devops engineer"
+    }
+  }
+
   "william.munoz" = {
     force_destroy = true
     email_address     = "william.munoz@endava.com"

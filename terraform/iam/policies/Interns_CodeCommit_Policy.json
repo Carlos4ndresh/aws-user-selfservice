@@ -35,6 +35,7 @@
         "codecommit:GetPullRequestApprovalStates",
         "codecommit:GetPullRequestOverrideState",
         "codecommit:GetReferences",
+        "codecommit:ListRepositories",
         "codecommit:GetRepository",
         "codecommit:GetTree",
         "codecommit:GetUploadArchiveStatus",
@@ -42,7 +43,6 @@
         "codecommit:GitPush",
         "codecommit:ListBranches",
         "codecommit:ListPullRequests",
-        "codecommit:ListRepositories",
         "codecommit:PostCommentForComparedCommit",
         "codecommit:PostCommentForPullRequest",
         "codecommit:PostCommentReply",
@@ -60,6 +60,17 @@
         "arn:aws:codecommit:us-east-1:446416709302:WeCruit-Backend",
         "arn:aws:codecommit:us-east-1:446416709302:WeCruit-Frontend"
       ]
+    },
+    {
+      "Sid": "AllowBasicCodeCommitAccess",
+        "Effect": "Allow",
+        "Action": [
+            "codecommit:Describe*",
+            "codecommit:List*",
+            "codecommit:Get*",
+            "codecommit:BatchGetRepositories"
+        ],
+        "Resource": "*"   
     }
   ]
 }
