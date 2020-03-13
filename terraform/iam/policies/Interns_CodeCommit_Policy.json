@@ -41,25 +41,49 @@
         "codecommit:GetUploadArchiveStatus",
         "codecommit:GitPull",
         "codecommit:GitPush",
+        "codecommit:UpdatePullRequestApprovalState",
         "codecommit:ListBranches",
         "codecommit:ListPullRequests",
         "codecommit:PostCommentForComparedCommit",
         "codecommit:PostCommentForPullRequest",
         "codecommit:PostCommentReply",
-        "codecommit:PutFile",
         "codecommit:TagResource",
         "codecommit:UntagResource",
         "codecommit:UpdateComment",
         "codecommit:UpdatePullRequestDescription",
         "codecommit:UpdatePullRequestStatus",
         "codecommit:UpdatePullRequestTitle",
-        "codecommit:UploadArchive"
+        "codecommit:UploadArchive",
+        "codecommit:EvaluatePullRequestApprovalRules"
       ],
       "Effect": "Allow",
       "Resource": [
         "arn:aws:codecommit:us-east-1:446416709302:WeCruit-Backend",
         "arn:aws:codecommit:us-east-1:446416709302:WeCruit-Frontend"
       ]
+    },
+    {
+        "Effect": "Deny",
+        "Action": [
+            "codecommit:GitPush",
+            "codecommit:DeleteBranch",
+            "codecommit:PutFile",
+            "codecommit:MergePullRequestByFastForward"
+        ],
+        "Resource": [
+        "arn:aws:codecommit:us-east-1:446416709302:WeCruit-Backend",
+        "arn:aws:codecommit:us-east-1:446416709302:WeCruit-Frontend"
+        ],
+        "Condition": {
+            "StringEqualsIfExists": {
+                "codecommit:References": [
+                    "refs/heads/master"   
+                ]
+            },
+            "Null": {
+                "codecommit:References": false
+            }
+        }
     },
     {
       "Sid": "AllowBasicCodeCommitAccess",

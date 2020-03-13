@@ -63,6 +63,22 @@ resource "aws_iam_policy" "Interns_CodeCommit_Policy" {
   policy = file("./iam/policies/Interns_CodeCommit_Policy.json")
 }
 
+resource "aws_iam_policy" "Interns_Devops_SNS_SQS_Permissions" {
+  name        = "Interns_Devops_SNS_SQS_Permissions"
+  path        = "/"
+  description = "Policy for devops interns to be able to create sns topics"
+
+  policy = file("./iam/policies/Interns_Devops_SNS_SQS_Permissions.json")
+}
+
+resource "aws_iam_policy" "Interns_Devops_IAM_Permissions" {
+  name        = "Interns_Devops_IAM_Permissions"
+  path        = "/"
+  description = "Policy for devops interns to be able to use basic IAM"
+
+  policy = file("./iam/policies/Interns_Devops_IAM_Permissions.json")
+}
+
 data "aws_iam_policy" "AWSCodeCommitFullAccess" {
   arn = "arn:aws:iam::aws:policy/AWSCodeCommitFullAccess"
 }
@@ -126,6 +142,17 @@ resource "aws_iam_group_policy_attachment" "CodeCommitFullAccessAttachment_DevOp
 resource "aws_iam_group_policy_attachment" "CodeCommitFullAccessAttachment_DevOpsInterns" {
   group      = aws_iam_group.interns-devops.id
   policy_arn = data.aws_iam_policy.AWSCodeCommitFullAccess.arn
+}
+
+resource "aws_iam_group_policy_attachment" "Interns_Devops_SNS_SQS_Attachment" {
+  group      = aws_iam_group.interns-devops.id
+  policy_arn = aws_iam_policy.Interns_Devops_SNS_SQS_Permissions.arn
+}
+
+
+resource "aws_iam_group_policy_attachment" "Interns_Devops_IAM_Permissions_Attachment" {
+  group      = aws_iam_group.interns-devops.id
+  policy_arn = aws_iam_policy.Interns_Devops_IAM_Permissions.arn
 }
 
 resource "aws_iam_group_policy_attachment" "CodeCommitRestrictedAttachment_Interns" {
