@@ -11,3 +11,13 @@ variable "provisioner" {
   type        = string
   default     = "Terraform"
 }
+
+variable "repo_name" {
+  type = string
+  default = "aws-iam-infra-selfservice"
+}
+
+variable "repo_branch" {
+  type = string
+  default = "master"
+}
