@@ -13,7 +13,8 @@ resource "aws_lambda_function" "submitUserCreation" {
     variables = {
       env = "production",
       owner = "cherrera",
-      project = "infrastructure management"
+      project = "infrastructure management",
+      provisioner = var.provisioner
     }
   }
 }

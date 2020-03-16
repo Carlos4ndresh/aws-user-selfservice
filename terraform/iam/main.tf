@@ -83,6 +83,28 @@ data "aws_iam_policy" "AWSCodeCommitFullAccess" {
   arn = "arn:aws:iam::aws:policy/AWSCodeCommitFullAccess"
 }
 
+## CodePipeline Policies
+
+data "aws_iam_policy_document" "codepipeline_terraform_assume_policy" {
+  statement {
+    effect  = "Allow"
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["codepipeline.amazonaws.com"]
+    }
+  }
+}
+
+resource "aws_iam_policy" "codepipeline_terraform_policy" {
+   name        = "codepipeline_terraform_policy"
+   description = "Policy for terraform codepipeline for IAM management"
+ 
+   policy = file("./iam/policies/codepipeline_terraformn_policy.json")
+ }
+ 
+
 ## Temporary policies
 resource "aws_iam_policy" "temporary_circleciworkshop_policy" {
   name        = "temporary_circleciworkshop_policy"
@@ -93,6 +115,17 @@ resource "aws_iam_policy" "temporary_circleciworkshop_policy" {
 }
 
 # Role Creation
+
+resource "aws_iam_role" "codepipeline_terraform_role" {
+  name = "codepipeline_terraform_role"
+
+  assume_role_policy = data.aws_iam_policy_document.codepipeline_terraform_assume_policy.json
+
+  tags = {
+      provisioner = var.provisioner,
+      env = "production" ## to replace with workspace       
+  }
+}
 
 resource "aws_iam_role" "user_creation_lambda_role" {
   name = "user_creation_lambda_role"
@@ -159,6 +192,13 @@ resource "aws_iam_group_policy_attachment" "CodeCommitRestrictedAttachment_Inter
   group      = aws_iam_group.interns.id
   policy_arn = aws_iam_policy.Interns_CodeCommit_Policy.arn
 }
+
+## Codepipeline policy attachment
+
+resource "aws_iam_role_policy_attachment" "terraform_codepipeline_role_attachment" {
+   role       = aws_iam_role.codepipeline_terraform_role.id
+   policy_arn = aws_iam_policy.codepipeline_terraform_policy.arn
+ }
 
 ## Temporary policies attachment
 

@@ -5,3 +5,9 @@ variable "region" {
 }
 
 variable user_names {}
+
+variable "provisioner" {
+  description = "Value to use in Provisioner tags"
+  type        = string
+  default     = "Terraform"
+}
