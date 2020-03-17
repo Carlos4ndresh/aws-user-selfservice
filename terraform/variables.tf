@@ -14,7 +14,7 @@ variable "provisioner" {
 
 variable "repo_name" {
   type = string
-  default = "aws-iam-infra-selfservice"
+  default = "aws-iam-infra-selfservice-test"
 }
 
 variable "repo_branch" {
