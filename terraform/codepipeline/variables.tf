@@ -1,6 +1,6 @@
 variable "provisioner" {}
 
-variable "codepipeline_iam_role" {}
+variable "codepipeline_terraform_role" {}
 
 variable "repo_name" {}
 

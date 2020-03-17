@@ -101,7 +101,7 @@ resource "aws_iam_policy" "codepipeline_terraform_policy" {
    name        = "codepipeline_terraform_policy"
    description = "Policy for terraform codepipeline for IAM management"
  
-   policy = file("./iam/policies/codepipeline_terraformn_policy.json")
+   policy = file("./iam/policies/codepipeline_terraform_policy.json")
  }
  
 

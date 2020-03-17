@@ -19,7 +19,7 @@ module "lambda" {
 module "codepipeline" {
     source = "./codepipeline"
     provisioner = var.provisioner
-    codepipeline_iam_role = module.iam.codepipeline_iam_role
+    codepipeline_terraform_role = module.iam.codepipeline_terraform_role
     repo_name = var.repo_name
     repo_branch = var.repo_branch
 }

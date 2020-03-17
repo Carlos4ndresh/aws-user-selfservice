@@ -104,7 +104,7 @@ resource "aws_kms_key" "artifact_encryption_key" {
 
 resource "aws_codepipeline" "terraform_iam_codepipeline" {
   name     = "terraform_iam_codepipeline"
-  role_arn = var.codepipeline_iam_role.arn
+  role_arn = var.codepipeline_terraform_role.arn
 
   artifact_store {
     location = aws_s3_bucket.terraform_iam_artifact_bucket.bucket
