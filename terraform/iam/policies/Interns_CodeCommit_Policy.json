@@ -54,7 +54,8 @@
         "codecommit:UpdatePullRequestStatus",
         "codecommit:UpdatePullRequestTitle",
         "codecommit:UploadArchive",
-        "codecommit:EvaluatePullRequestApprovalRules"
+        "codecommit:EvaluatePullRequestApprovalRules",
+        "codecommit:MergeBranchesByThreeWay"
       ],
       "Effect": "Allow",
       "Resource": [
