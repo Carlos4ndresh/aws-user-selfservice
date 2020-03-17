@@ -1,8 +1,4 @@
-variable "provisioner" {
-  description = "Value to use in Provisioner tags"
-  type        = string
-  default     = "Terraform"
-}
+variable "provisioner" {}
 
 variable "user_names" {
   description = "A nested map of users and properties.  The outer keys are usernames, and the inner properties map is documented in the User Properties section."

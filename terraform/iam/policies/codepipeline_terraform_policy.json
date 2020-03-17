@@ -1,0 +1,56 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "S3CodePipelineAccess",
+      "Action": [
+        "s3:GetBucketVersioning",
+        "s3:GetObject",
+        "s3:GetObjectVersion",
+        "s3:GetObjectVersionTagging",
+        "s3:ListBucket",
+        "s3:ListBucketVersions",
+        "s3:PutObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "CodeBuildCodePipelineAccess",
+      "Action": [
+        "codebuild:BatchGetBuilds",
+        "codebuild:BatchGetProjects",
+        "codebuild:StartBuild",
+        "codebuild:StopBuild"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "CloudWatchFullAccess",
+      "Action": "cloudwatch:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "SNSFullAccess",
+      "Action": "sns:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "SQSFullAccess",
+      "Action": "sqs:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "PassRole",
+      "Action": [
+        "iam:PassRole"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
