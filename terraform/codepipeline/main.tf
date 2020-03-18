@@ -18,7 +18,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "terraform_iam_codebuild_role_policy" {
-  name = "terraform_iam_codebuild_role_policy"
+  name = "terraform-iam-codebuild-role-policy"
   role = aws_iam_role.terraform_iam_codebuild_role.id
 
   policy = <<POLICY
@@ -35,7 +35,7 @@ resource "aws_iam_role_policy" "terraform_iam_codebuild_role_policy" {
       "Sid": "CodeBuildFullAccessOnSelf",
       "Action": "codebuild:*",
       "Effect": "Allow",
-      "Resource": "aws_codebuild_project.terraform_iam_codebuild_project.id"
+      "Resource": "${aws_codebuild_project.terraform_iam_codebuild_project.id}"
     },
     {
       "Sid": "CloudwatchLogsManagement",
@@ -86,7 +86,7 @@ resource "aws_codebuild_project" "terraform_iam_codebuild_project" {
 }
 
 resource "aws_s3_bucket" "terraform_iam_artifact_bucket" {
-  bucket = "terraform_iam_artifact_bucket"
+  bucket = "terraform-iamusers-med-artifact-bucket"
   acl    = "private"
   force_destroy = true
 
