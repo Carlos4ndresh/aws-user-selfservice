@@ -35,7 +35,7 @@ resource "aws_iam_policy" "UserSelfManagement" {
   path        = "/"
   description = "Password and account Policy for non-administrator users, interns and mentors"
 
-  policy = file("iam/policies/Non_PrivilegedUsers_IAM_Selfmanagement.json")
+  policy = file("${path.module}/policies/Non_PrivilegedUsers_IAM_Selfmanagement.json")
 
 }
 
@@ -44,7 +44,7 @@ resource "aws_iam_policy" "UserMFASelfmanagement" {
   path        = "/"
   description = "MFA Policy for non-administrator users, interns and mentors"
 
-  policy = file("iam/policies/Non_PrivilegedUsers_MFA_Policy.json")
+  policy = file("${path.module}/policies/Non_PrivilegedUsers_MFA_Policy.json")
 }
 
 resource "aws_iam_policy" "user_creation_lambda_execution_policy" {
@@ -52,7 +52,7 @@ resource "aws_iam_policy" "user_creation_lambda_execution_policy" {
   path        = "/"
   description = "Lambda execution policy for the user creation lambda function"
 
-  policy = file("iam/policies/user_creation_lambda_iam_policy.json")
+  policy = file("${path.module}/policies/user_creation_lambda_iam_policy.json")
 }
 
 resource "aws_iam_policy" "Interns_CodeCommit_Policy" {
@@ -60,7 +60,7 @@ resource "aws_iam_policy" "Interns_CodeCommit_Policy" {
   path        = "/"
   description = "CodeCommit Policy for non devops interns"
 
-  policy = file("iam/policies/Interns_CodeCommit_Policy.json")
+  policy = file("${path.module}/policies/Interns_CodeCommit_Policy.json")
 }
 
 resource "aws_iam_policy" "Interns_Devops_SNS_SQS_Permissions" {
@@ -68,7 +68,7 @@ resource "aws_iam_policy" "Interns_Devops_SNS_SQS_Permissions" {
   path        = "/"
   description = "Policy for devops interns to be able to create sns topics"
 
-  policy = file("iam/policies/Interns_Devops_SNS_SQS_Permissions.json")
+  policy = file("${path.module}/policies/Interns_Devops_SNS_SQS_Permissions.json")
 }
 
 resource "aws_iam_policy" "Interns_Devops_IAM_Permissions" {
@@ -76,7 +76,7 @@ resource "aws_iam_policy" "Interns_Devops_IAM_Permissions" {
   path        = "/"
   description = "Policy for devops interns to be able to use basic IAM"
 
-  policy = file("iam/policies/Interns_Devops_IAM_Permissions.json")
+  policy = file("${path.module}/policies/Interns_Devops_IAM_Permissions.json")
 }
 
 data "aws_iam_policy" "AWSCodeCommitFullAccess" {
@@ -101,7 +101,7 @@ resource "aws_iam_policy" "codepipeline_terraform_policy" {
    name        = "codepipeline_terraform_policy"
    description = "Policy for terraform codepipeline for IAM management"
  
-   policy = file("iam/policies/codepipeline_terraform_policy.json")
+   policy = file("${path.module}/policies/codepipeline_terraform_policy.json")
  }
  
 
@@ -111,7 +111,7 @@ resource "aws_iam_policy" "temporary_circleciworkshop_policy" {
   path        = "/"
   description = "Temporary permissions for the CircleCI workshop. Responsible: william.munoz"
 
-  policy = file("iam/policies/Temporary_CircleCIWorkshop_Services.json")
+  policy = file("${path.module}/policies/Temporary_CircleCIWorkshop_Services.json")
 }
 
 # Role Creation
