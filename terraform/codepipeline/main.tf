@@ -32,6 +32,19 @@ resource "aws_iam_role_policy" "terraform_iam_codebuild_role_policy" {
       "Resource": "*"
     },
     {
+      "Sid": "S3CodePipelineAccess",
+      "Action": [
+        "s3:GetObject",
+        "s3:GetObjectVersion",
+        "s3:GetBucketVersioning",
+        "s3:PutObject",
+        "s3:ListBucket",
+        "s3:DeleteObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
       "Sid": "CodeBuildFullAccessOnSelf",
       "Action": "codebuild:*",
       "Effect": "Allow",
@@ -52,6 +65,14 @@ resource "aws_iam_role_policy" "terraform_iam_codebuild_role_policy" {
       ],
       "Effect": "Allow",
       "Resource": "*"
+    },
+    {
+      "Sid": "KMSFullAccess",
+      "Action": [
+        "kms:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:kms:us-east-1:446416709302:key/a622e642-62a5-425f-9e29-701275844430"
     }
   ]
 }
@@ -99,6 +120,12 @@ resource "aws_s3_bucket" "terraform_iam_artifact_bucket" {
 resource "aws_kms_key" "artifact_encryption_key" {
   description             = "KMS key for artifact encryption"
   deletion_window_in_days = 10
+  tags = {
+    Provisioner = var.provisioner
+    Environment = "Production"
+    KeyName = "Artifact Encryption Key"
+  }
+
 }
 
 

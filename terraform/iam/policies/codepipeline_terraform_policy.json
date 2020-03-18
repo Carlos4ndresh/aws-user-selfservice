@@ -4,13 +4,12 @@
     {
       "Sid": "S3CodePipelineAccess",
       "Action": [
-        "s3:GetBucketVersioning",
         "s3:GetObject",
         "s3:GetObjectVersion",
-        "s3:GetObjectVersionTagging",
+        "s3:GetBucketVersioning",
+        "s3:PutObject",
         "s3:ListBucket",
-        "s3:ListBucketVersions",
-        "s3:PutObject"
+        "s3:DeleteObject"
       ],
       "Effect": "Allow",
       "Resource": "*"
@@ -24,7 +23,24 @@
         "codebuild:StopBuild"
       ],
       "Effect": "Allow",
-      "Resource": "*"
+      "Resource": "arn:aws:codebuild:us-east-1:446416709302:project/terraform_iam_codebuild_project"
+    },
+    {
+      "Sid": "CodeCommitAccess",
+      "Action": [
+        "codecommit:BatchGetCommits",
+        "codecommit:BatchGetRepositories",
+        "codecommit:GetBranch",
+        "codecommit:GetComment",
+        "codecommit:GetCommit",
+        "codecommit:UploadArchive",
+        "codecommit:GetRepository",
+        "codecommit:GitPull",
+        "codecommit:ListBranches",
+        "codecommit:GetUploadArchiveStatus"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:codecommit:us-east-1:446416709302:aws-iam-infra-selfservice"
     },
     {
       "Sid": "CloudWatchFullAccess",
@@ -51,6 +67,14 @@
       ],
       "Effect": "Allow",
       "Resource": "*"
+    },
+    {
+      "Sid": "KMSFullAccess",
+      "Action": [
+        "kms:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:kms:us-east-1:446416709302:key/a622e642-62a5-425f-9e29-701275844430"
     }
   ]
 }

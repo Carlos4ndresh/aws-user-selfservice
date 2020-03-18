@@ -39,13 +39,15 @@
         "dynamodb:BatchGet*",
         "dynamodb:DescribeStream",
         "dynamodb:DescribeTable",
-        "dynamodb:Get*",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
         "dynamodb:Query",
         "dynamodb:Scan",
         "dynamodb:BatchWrite*",
         "dynamodb:CreateTable",
-        "dynamodb:Delete*",
-        "dynamodb:Update*",
+        "dynamodb:DeleteTable",
+        "dynamodb:UpdateTable",
         "dynamodb:PutItem"
       ],
       "Resource": "arn:aws:dynamodb:*:*:table/terraform-circleci-state"      
