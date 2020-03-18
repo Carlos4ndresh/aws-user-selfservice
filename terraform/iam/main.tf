@@ -35,7 +35,7 @@ resource "aws_iam_policy" "UserSelfManagement" {
   path        = "/"
   description = "Password and account Policy for non-administrator users, interns and mentors"
 
-  policy = file("${path.module}/policies/Non_PrivilegedUsers_IAM_Selfmanagement.json")
+  policy = file("${path.module}/policies/Non_PrivilegedUsers_IAM_SelfManagement.json")
 
 }
 
