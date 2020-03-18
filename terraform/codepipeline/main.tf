@@ -46,6 +46,14 @@ resource "aws_iam_role_policy" "terraform_iam_codebuild_role_policy" {
       "Resource": "${aws_codebuild_project.terraform_iam_codebuild_project.id}"
     },
     {
+      "Sid": "CodePipelineAccesss",
+      "Action": [
+        "codepipeline:GetPipeline"
+      ],
+      "Effect": "Allow",
+      "Resource": "${aws_codepipeline.terraform_iam_codepipeline.arn}"
+    },
+    {
       "Sid": "CloudwatchLogsManagement",
       "Action": [
         "logs:CreateLogDelivery",
