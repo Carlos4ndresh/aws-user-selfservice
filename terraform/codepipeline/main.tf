@@ -48,7 +48,8 @@ resource "aws_iam_role_policy" "terraform_iam_codebuild_role_policy" {
     {
       "Sid": "CodePipelineAccesss",
       "Action": [
-        "codepipeline:GetPipeline"
+        "codepipeline:GetPipeline",
+        "codepipeline:ListTagsForResource"
       ],
       "Effect": "Allow",
       "Resource": "${aws_codepipeline.terraform_iam_codepipeline.arn}"
