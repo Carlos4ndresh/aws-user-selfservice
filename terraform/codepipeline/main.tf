@@ -73,6 +73,15 @@ resource "aws_iam_role_policy" "terraform_iam_codebuild_role_policy" {
       ],
       "Effect": "Allow",
       "Resource": "arn:aws:kms:us-east-1:446416709302:key/a622e642-62a5-425f-9e29-701275844430"
+    },
+    {
+      "Sid": "DynamoDBLockAccess",
+      "Action": [
+        "dynamodb:PutItem",
+        "dynamodb:GetItem"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:dynamodb:us-east-1:446416709302:table/terraform-endava-med-lock"
     }
   ]
 }
