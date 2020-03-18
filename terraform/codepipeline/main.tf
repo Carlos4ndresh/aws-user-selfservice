@@ -78,7 +78,9 @@ resource "aws_iam_role_policy" "terraform_iam_codebuild_role_policy" {
       "Sid": "DynamoDBLockAccess",
       "Action": [
         "dynamodb:PutItem",
-        "dynamodb:GetItem"
+        "dynamodb:GetItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:UpdateItem"
       ],
       "Effect": "Allow",
       "Resource": "arn:aws:dynamodb:us-east-1:446416709302:table/terraform-endava-med-lock"
