@@ -37,7 +37,7 @@ resource "aws_iam_role_policy" "terraform_iam_codebuild_role_policy" {
         "s3:*"
       ],
       "Effect": "Allow",
-      "Resource": "${aws_s3_bucket.terraform_iam_artifact_bucket.arn}"
+      "Resource": "*"
     },
     {
       "Sid": "CodeBuildFullAccessOnSelf",
