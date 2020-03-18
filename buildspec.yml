@@ -12,7 +12,7 @@ phases:
       - "pwd"
   pre_build:
     commands:
-      - "cd terraform"
+      - "cd $CODEBUILD_SRC_DIR/terraform"
       - "ls -larths"
       - terraform init
       - terraform validate
