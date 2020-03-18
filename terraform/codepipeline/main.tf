@@ -39,7 +39,10 @@ resource "aws_iam_role_policy" "terraform_iam_codebuild_role_policy" {
         "s3:GetBucketVersioning",
         "s3:PutObject",
         "s3:ListBucket",
-        "s3:DeleteObject"
+        "s3:DeleteObject",
+        "s3:PutBucketAcl",
+        "s3:PutObjectAcl",
+        "s3:PutObjectVersionAcl"
       ],
       "Effect": "Allow",
       "Resource": "*"
