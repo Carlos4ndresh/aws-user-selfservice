@@ -23,11 +23,6 @@ output "user_groups" {
   }
 }
 
-output "codepipeline_terraform_role" {
-  value = aws_iam_role.codepipeline_terraform_role
-}
-
-
 
 # output "user_password" {
 #   value = {
