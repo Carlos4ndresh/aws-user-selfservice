@@ -1,0 +1,103 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DevelopersCodeCommitRestricted",
+      "Action": [
+        "codecommit:BatchGetCommits",
+        "codecommit:BatchGetPullRequests",
+        "codecommit:BatchGetRepositories",
+        "codecommit:CancelUploadArchive",
+        "codecommit:CreateBranch",
+        "codecommit:CreateCommit",
+        "codecommit:CreatePullRequest",
+        "codecommit:CreateUnreferencedMergeCommit",
+        "codecommit:DeleteCommentContent",
+        "codecommit:DeleteFile",
+        "codecommit:DescribeMergeConflicts",
+        "codecommit:DescribePullRequestEvents",
+        "codecommit:GetBlob",
+        "codecommit:GetBranch",
+        "codecommit:GetComment",
+        "codecommit:GetCommentsForComparedCommit",
+        "codecommit:GetCommentsForPullRequest",
+        "codecommit:GetCommit",
+        "codecommit:GetCommitHistory",
+        "codecommit:GetCommitsFromMergeBase",
+        "codecommit:GetDifferences",
+        "codecommit:GetFile",
+        "codecommit:GetFolder",
+        "codecommit:GetMergeCommit",
+        "codecommit:GetMergeConflicts",
+        "codecommit:GetMergeOptions",
+        "codecommit:GetObjectIdentifier",
+        "codecommit:GetPullRequest",
+        "codecommit:GetPullRequestApprovalStates",
+        "codecommit:GetPullRequestOverrideState",
+        "codecommit:GetReferences",
+        "codecommit:ListRepositories",
+        "codecommit:GetRepository",
+        "codecommit:GetTree",
+        "codecommit:GetUploadArchiveStatus",
+        "codecommit:GitPull",
+        "codecommit:GitPush",
+        "codecommit:UpdatePullRequestApprovalState",
+        "codecommit:ListBranches",
+        "codecommit:ListPullRequests",
+        "codecommit:PostCommentForComparedCommit",
+        "codecommit:PostCommentForPullRequest",
+        "codecommit:PostCommentReply",
+        "codecommit:TagResource",
+        "codecommit:UntagResource",
+        "codecommit:UpdateComment",
+        "codecommit:UpdatePullRequestDescription",
+        "codecommit:UpdatePullRequestStatus",
+        "codecommit:UpdatePullRequestTitle",
+        "codecommit:UploadArchive",
+        "codecommit:EvaluatePullRequestApprovalRules",
+        "codecommit:MergeBranchesByThreeWay"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:codecommit:us-east-2:446416709302:routrip-back",
+        "arn:aws:codecommit:us-east-2:446416709302:routrip-front",
+        "arn:aws:codecommit:us-east-2:446416709302:routrip-mobile"
+      ]
+    },
+    {
+        "Effect": "Deny",
+        "Action": [
+            "codecommit:GitPush",
+            "codecommit:DeleteBranch",
+            "codecommit:PutFile",
+            "codecommit:MergePullRequestByFastForward"
+        ],
+        "Resource": [
+        "arn:aws:codecommit:us-east-2:446416709302:routrip-back",
+        "arn:aws:codecommit:us-east-2:446416709302:routrip-front",
+        "arn:aws:codecommit:us-east-2:446416709302:routrip-mobile"
+      ],
+        "Condition": {
+            "StringEqualsIfExists": {
+                "codecommit:References": [
+                    "refs/heads/master"   
+                ]
+            },
+            "Null": {
+                "codecommit:References": false
+            }
+        }
+    },
+    {
+      "Sid": "AllowBasicCodeCommitAccess",
+        "Effect": "Allow",
+        "Action": [
+            "codecommit:Describe*",
+            "codecommit:List*",
+            "codecommit:Get*",
+            "codecommit:BatchGetRepositories"
+        ],
+        "Resource": "*"   
+    }
+  ]
+}

@@ -176,5 +176,77 @@ user_names = {
     }
   }
 
+  "juan.hormaza" = {
+    force_destroy = true
+    email_address     = "JuanSebastian.Hormaza@endava.com"
+    group_memberships = [ "non_privileged_users", "developers-routrip" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "developer",
+      project = "RouteTrip"
+    }
+  }
+
+  "santiago.vanegas" = {
+    force_destroy = true
+    email_address     = "Santiago.Vanegas@endava.com"
+    group_memberships = [ "non_privileged_users", "developers-routrip" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "developer",
+      project = "RouteTrip"
+    }
+  }
+
+  "jose.alzate" = {
+    force_destroy = true
+    email_address     = "Jose.Alzate@endava.com"
+    group_memberships = [ "non_privileged_users", "developers-routrip" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "developer",
+      project = "RouteTrip"
+    }
+  }
+
+  "sebastian.loaiza" = {
+    force_destroy = true
+    email_address     = "Sebastian.Loaiza@endava.com"
+    group_memberships = [ "non_privileged_users", "developers-routrip" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "developer",
+      project = "RouteTrip"
+    }
+  }
+
+  "diego.leon" = {
+    force_destroy = true
+    email_address     = "Diego.Leon@endava.com"
+    group_memberships = [ "non_privileged_users", "developers-routrip" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "developer",
+      project = "RouteTrip"
+    }
+  }
+
+  "david.acevedo" = {
+    force_destroy = true
+    email_address     = "David.Acevedo@endava.com"
+    group_memberships = [ "non_privileged_users", "devops_engineers" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "DevOps Engineer",
+      project = "RouteTrip"
+    }
+  }
+
 }
 

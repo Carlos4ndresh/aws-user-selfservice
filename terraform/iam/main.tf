@@ -16,6 +16,10 @@ resource "aws_iam_group" "developers" {
     name = "developers"
 }
 
+resource "aws_iam_group" "developers_routrip" {
+    name = "developers-routrip"
+}
+
 resource "aws_iam_group" "non_privileged" {
     name = "non_privileged_users"
 }
@@ -79,6 +83,14 @@ resource "aws_iam_policy" "Interns_Devops_IAM_Permissions" {
   policy = file("${path.module}/policies/Interns_Devops_IAM_Permissions.json")
 }
 
+resource "aws_iam_policy" "routrip_developers_CodeCommit_Policy" {
+  name        = "Routrip_Developers_CodeCommit_Policy"
+  path        = "/"
+  description = "Policy for the developer group of projecet route trip"
+
+  policy = file("${path.module}/policies/Routrip_Developers_CodeCommit_Policy.json")
+}
+
 data "aws_iam_policy" "AWSCodeCommitFullAccess" {
   arn = "arn:aws:iam::aws:policy/AWSCodeCommitFullAccess"
 }
@@ -123,6 +135,11 @@ EOF
 resource "aws_iam_role_policy_attachment" "user_creation_lambda_role_attachment" {
   role       =  aws_iam_role.user_creation_lambda_role.name
   policy_arn =  aws_iam_policy.user_creation_lambda_execution_policy.arn
+}
+
+resource "aws_iam_group_policy_attachment" "RoutripDevelopersAttachment" {
+  group      = aws_iam_group.developers_routrip.id
+  policy_arn = aws_iam_policy.routrip_developers_CodeCommit_Policy.arn
 }
 
 resource "aws_iam_group_policy_attachment" "NonPrivilegedAttachment" {
