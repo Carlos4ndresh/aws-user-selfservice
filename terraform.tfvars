@@ -236,6 +236,18 @@ user_names = {
     }
   }
 
+  "eduard.gomez" = {
+    force_destroy = true
+    email_address     = "Eduard.Gomez@endava.com"
+    group_memberships = [ "non_privileged_users", "developers-routrip" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "developer",
+      project = "RouteTrip"
+    }
+  }
+
   "david.acevedo" = {
     force_destroy = true
     email_address     = "David.Acevedo@endava.com"
