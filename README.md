@@ -29,4 +29,5 @@ For policies creation, besides that, you must create the .json file inside the `
 
 ## Disclaimer
 
-This last part is pending to be developed, there is only a lambda function developed that creates instantly the user, which is just a temporary feature.
+- This last part is pending to be developed, there is only a lambda function developed that creates instantly the user, which is just a temporary feature.
+- You'll need to know terraform to use this repo
