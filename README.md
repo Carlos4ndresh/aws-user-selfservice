@@ -6,7 +6,7 @@ Also, Lambda Functions and infrastructure to support a self-service IAM User cre
 
 ## Usage of Terraform to Create IAM Users
 
-Inside the *terraform/iam* folder there's a **terraform.tfvars** file that contains the user list in the form:
+Inside the root folder there's a **terraform.tfvars** file that contains the user list in the form:
 
     "user.name" = {
         force_destroy = true
