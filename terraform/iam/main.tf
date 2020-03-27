@@ -185,10 +185,10 @@ resource "aws_iam_group_policy_attachment" "CodeCommitRestrictedAttachment_Inter
 #     policy_arn = aws_iam_policy.temporary_circleciworkshop_policy.arn
 # }
 
-resource "aws_iam_group_policy_attachment" "TemporaryCircleCIPolicyAttachmentDevOps" {
-    group = aws_iam_group.devops_engineers.id
-    policy_arn = aws_iam_policy.temporary_circleciworkshop_policy.arn
-}
+# resource "aws_iam_group_policy_attachment" "TemporaryCircleCIPolicyAttachmentDevOps" {
+#     group = aws_iam_group.devops_engineers.id
+#     policy_arn = aws_iam_policy.temporary_circleciworkshop_policy.arn
+# }
 
 # Users creation (testing)
 
