@@ -59,8 +59,8 @@
       ],
       "Effect": "Allow",
       "Resource": [
-        "arn:aws:codecommit:us-east-2:446416709302:routrip-back",
-        "arn:aws:codecommit:us-east-2:446416709302:routrip-front",
+        "arn:aws:codecommit:us-east-2:446416709302:routrip-backend",
+        "arn:aws:codecommit:us-east-2:446416709302:routrip-frontend",
         "arn:aws:codecommit:us-east-2:446416709302:routrip-mobile"
       ]
     },
@@ -73,8 +73,8 @@
             "codecommit:MergePullRequestByFastForward"
         ],
         "Resource": [
-        "arn:aws:codecommit:us-east-2:446416709302:routrip-back",
-        "arn:aws:codecommit:us-east-2:446416709302:routrip-front",
+        "arn:aws:codecommit:us-east-2:446416709302:routrip-backend",
+        "arn:aws:codecommit:us-east-2:446416709302:routrip-frontend",
         "arn:aws:codecommit:us-east-2:446416709302:routrip-mobile"
       ],
         "Condition": {
