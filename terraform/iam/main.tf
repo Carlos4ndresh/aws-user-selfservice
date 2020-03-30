@@ -135,6 +135,14 @@ resource "aws_iam_role" "user_creation_lambda_role" {
   ]
 }
 EOF
+
+  tags = {
+      env = "Production",
+      Provisioner = var.provisioner,
+      owner = "carlos.herrera",
+      project = "Infrastructure Manager"
+  }
+
 }
 
 resource "aws_iam_role" "EC2_CodeCommit_ReadOnly_role" {
@@ -157,7 +165,10 @@ resource "aws_iam_role" "EC2_CodeCommit_ReadOnly_role" {
 EOF
 
   tags = {
-      tag-key = "tag-value"
+      env = "Production",
+      Provisioner = var.provisioner,
+      owner = "carlos.herrera",
+      project = "Infrastructure Manager"
   }
 }
 
@@ -245,6 +256,15 @@ resource "aws_iam_user_group_membership" "group_membership" {
 
   depends_on = [ aws_iam_user.non_privileged_user ]
 }
+
+# Profiles
+
+## EC2 Instance Profiles
+resource "aws_iam_instance_profile" "ec2_codecommit_instance_profile" {
+  name = "ec2_codecommit_instance_profile"
+  role = aws_iam_role.EC2_CodeCommit_ReadOnly_role.name
+}
+
 
 ## User's profiles and autopassword generation (testing)
 
