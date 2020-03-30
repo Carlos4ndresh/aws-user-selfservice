@@ -1,0 +1,41 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ReadOnlyAccessToRepos",
+            "Effect": "Allow",
+            "Action": [
+                "codecommit:BatchGet*",
+                "codecommit:BatchDescribe*",
+                "codecommit:Describe*",
+                "codecommit:EvaluatePullRequestApprovalRules",
+                "codecommit:Get*",
+                "codecommit:List*",
+                "codecommit:GitPull"
+            ],
+            "Resource": [
+                "arn:aws:codecommit:us-east-1:446416709302:WeCruit-Backend",
+                "arn:aws:codecommit:us-east-1:446416709302:WeCruit-Frontend"
+            ]
+        },
+        {
+            "Sid": "ReadOnlyAccessToPipelines",
+            "Action": [
+                "codepipeline:GetPipeline",
+                "codepipeline:GetPipelineState",
+                "codepipeline:GetPipelineExecution",
+                "codepipeline:ListPipelineExecutions",
+                "codepipeline:ListActionExecutions",
+                "codepipeline:ListActionTypes",
+                "codepipeline:ListPipelines",
+                "codepipeline:ListTagsForResource",
+                "codedeploy:GetApplication",
+                "codedeploy:GetDeploymentGroup",
+                "codedeploy:ListApplications",
+                "codedeploy:ListDeploymentGroups",
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ]
+}

@@ -67,6 +67,14 @@ resource "aws_iam_policy" "Interns_CodeCommit_Policy" {
   policy = file("${path.module}/policies/Interns_CodeCommit_Policy.json")
 }
 
+resource "aws_iam_policy" "Mentors_CodeCommit_Policy" {
+  name        = "Mentors_CodeCommit_Policy"
+  path        = "/"
+  description = "CodeCommit Policy for interns mentors"
+
+  policy = file("${path.module}/policies/Mentors_CodeCommit_Policy.json")
+}
+
 resource "aws_iam_policy" "Interns_Devops_SNS_SQS_Permissions" {
   name        = "Interns_Devops_SNS_SQS_Permissions"
   path        = "/"
@@ -129,8 +137,36 @@ resource "aws_iam_role" "user_creation_lambda_role" {
 EOF
 }
 
+resource "aws_iam_role" "EC2_CodeCommit_ReadOnly_role" {
+  name = "EC2_CodeCommit_ReadOnly_role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+
+  tags = {
+      tag-key = "tag-value"
+  }
+}
 
 # Policy Attachment section
+
+resource "aws_iam_role_policy_attachment" "Mentors_CodeCommit_readonly_role_attachment" {
+  role       =  aws_iam_role.EC2_CodeCommit_ReadOnly_role.name
+  policy_arn = aws_iam_policy.Mentors_CodeCommit_Policy.arn
+}
 
 resource "aws_iam_role_policy_attachment" "user_creation_lambda_role_attachment" {
   role       =  aws_iam_role.user_creation_lambda_role.name
