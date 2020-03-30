@@ -32,7 +32,7 @@
                 "codedeploy:GetApplication",
                 "codedeploy:GetDeploymentGroup",
                 "codedeploy:ListApplications",
-                "codedeploy:ListDeploymentGroups",
+                "codedeploy:ListDeploymentGroups"
             ],
             "Effect": "Allow",
             "Resource": "*"
