@@ -32,4 +32,5 @@ module "ec2" {
     env = var.env
     key_pair = var.key_pair
     security_group_id = module.vpc.security_group_id
+    instance_profile = module.iam.ec2_instance_profile
 }

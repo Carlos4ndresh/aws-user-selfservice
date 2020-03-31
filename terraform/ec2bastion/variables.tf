@@ -9,3 +9,5 @@ variable "env" {}
 variable "key_pair" {}
 
 variable "security_group_id" {}
+
+variable "instance_profile" {}

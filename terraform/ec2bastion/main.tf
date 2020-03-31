@@ -14,12 +14,18 @@ data "aws_ami" "ubuntu_latest" {
   owners = ["099720109477"] # Canonical
 }
 
+data "template_file" "user_data" {
+  template = file("${path.module}/userdata.tpl")
+}
+
 resource "aws_instance" "ec2_bastion" {
   ami           = data.aws_ami.ubuntu_latest.id
   instance_type = "t2.micro"
   availability_zone = "us-east-1a"
   vpc_security_group_ids = [var.security_group_id,]
   key_name = var.key_pair
+  iam_instance_profile = var.instance_profile.name
+  user_data = data.template_file.user_data.rendered
 
   tags = {
     owner = var.owner,
