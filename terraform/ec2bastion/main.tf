@@ -14,7 +14,7 @@ data "aws_ami" "ubuntu_latest" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "ec2_bastion" {
   ami           = data.aws_ami.ubuntu_latest.id
   instance_type = "t2.micro"
   availability_zone = "us-east-1a"

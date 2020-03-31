@@ -3,7 +3,7 @@ output "vpc_id" {
 }
 
 output "subnet_id" {
-    value = aws_sub.ec2_bastion_subnet.id
+    value = aws_subnet.ec2_bastion_subnet.id
 }
 
 output "internet_gw_id" {

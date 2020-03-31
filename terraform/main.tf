@@ -31,5 +31,5 @@ module "ec2" {
     owner = var.owner
     env = var.env
     key_pair = var.key_pair
-    security_group_id = var.security_group_id
+    security_group_id = module.vpc.security_group_id
 }
