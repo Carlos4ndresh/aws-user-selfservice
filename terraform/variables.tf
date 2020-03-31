@@ -21,3 +21,23 @@ variable "repo_branch" {
   type = string
   default = "master"
 }
+
+variable "owner" {
+  type = string
+  default = "carlos.herrera"
+}
+
+variable "project" {
+  type = string
+  default = "infrastructure management"
+}
+
+variable "env" {
+  type = string
+  default = "production"
+}
+
+variable "key_pair" {
+  type = string
+  default = "ec2bastionkey"
+}

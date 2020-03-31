@@ -23,6 +23,10 @@ output "user_groups" {
   }
 }
 
+output "ec2_instance_profile" {
+  value = aws_iam_instance_profile.ec2_codecommit_instance_profile
+}
+
 
 # output "user_password" {
 #   value = {
