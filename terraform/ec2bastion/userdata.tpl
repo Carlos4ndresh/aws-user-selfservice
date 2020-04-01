@@ -1,8 +1,9 @@
 #!/bin/bash -xe
 
-sudo apt-get update -y
-sudo apt-get install git -y
-sudo apt-get install awscli -y
+apt-get update -y
+apt-get upgrade -y
+apt-get install git -y
+apt-get install awscli -y
 
-runuser -l ubuntu -c 'git config --global credential.helper \'!aws codecommit credential-helper $@ \''
-runuser -l ubuntu -c  'git config --global credential.UseHttpPath true'
+runuser -l ubuntu -c "git config --global credential.helper '!aws codecommit credential-helper $@'"
+runuser -l ubuntu -c "git config --global credential.UseHttpPath true"
