@@ -39,6 +39,8 @@ resource "aws_s3_bucket_public_access_block" "block_public_access_delivery_bucke
 
   block_public_acls   = true
   block_public_policy = true
+  ignore_public_acls = true
+  restrict_public_buckets = true
 }
 
 resource "aws_s3_bucket" "audit_log_bucket" {
@@ -59,4 +61,6 @@ resource "aws_s3_bucket_public_access_block" "block_public_access_log_bucket" {
 
   block_public_acls   = true
   block_public_policy = true
+  ignore_public_acls = true
+  restrict_public_buckets = true
 }
