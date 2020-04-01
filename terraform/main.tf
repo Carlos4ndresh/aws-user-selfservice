@@ -35,3 +35,12 @@ module "ec2" {
     instance_profile = module.iam.ec2_instance_profile
     subnet_id = module.vpc.subnet_id
 }
+
+module "s3_resources" {
+    source = "./s3"
+    project = var.project
+    provisioner = var.provisioner
+    owner = var.owner
+    env = var.env
+    region = var.region
+}
