@@ -34,6 +34,13 @@ resource "aws_s3_bucket" "delivery_bucket" {
   }
 }
 
+resource "aws_s3_bucket_public_access_block" "block_public_access_delivery_bucket" {
+  bucket = aws_s3_bucket.delivery_bucket.id
+
+  block_public_acls   = true
+  block_public_policy = true
+}
+
 resource "aws_s3_bucket" "audit_log_bucket" {
   bucket = "endava-med-bucket-log-audit"
   acl    = "log-delivery-write"
@@ -45,4 +52,11 @@ resource "aws_s3_bucket" "audit_log_bucket" {
     provisioner = var.provisioner,
     env = var.env
   }
+}
+
+resource "aws_s3_bucket_public_access_block" "block_public_access_log_bucket" {
+  bucket = aws_s3_bucket.audit_log_bucket.id
+
+  block_public_acls   = true
+  block_public_policy = true
 }
