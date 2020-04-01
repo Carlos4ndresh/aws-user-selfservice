@@ -26,6 +26,8 @@ resource "aws_instance" "ec2_bastion" {
   key_name = var.key_pair
   iam_instance_profile = var.instance_profile.name
   user_data = data.template_file.user_data.rendered
+  associate_public_ip_address = true
+  subnet_id = var.subnet_id
 
   tags = {
     owner = var.owner,
