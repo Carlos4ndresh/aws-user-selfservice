@@ -225,17 +225,17 @@ resource "aws_iam_group_policy_attachment" "CodeCommitRestrictedAttachment_Inter
   policy_arn = aws_iam_policy.Interns_CodeCommit_Policy.arn
 }
 
-## Temporary policies attachment
+# Temporary policies attachment
 
-# resource "aws_iam_group_policy_attachment" "TemporaryCircleCIPolicyAttachmentInterns" {
-#     group = aws_iam_group.interns-devops.id
-#     policy_arn = aws_iam_policy.temporary_circleciworkshop_policy.arn
-# }
+resource "aws_iam_group_policy_attachment" "TemporaryCircleCIPolicyAttachmentInterns" {
+    group = aws_iam_group.interns-devops.id
+    policy_arn = aws_iam_policy.temporary_circleciworkshop_policy.arn
+}
 
-# resource "aws_iam_group_policy_attachment" "TemporaryCircleCIPolicyAttachmentDevOps" {
-#     group = aws_iam_group.devops_engineers.id
-#     policy_arn = aws_iam_policy.temporary_circleciworkshop_policy.arn
-# }
+resource "aws_iam_group_policy_attachment" "TemporaryCircleCIPolicyAttachmentDevOps" {
+    group = aws_iam_group.devops_engineers.id
+    policy_arn = aws_iam_policy.temporary_circleciworkshop_policy.arn
+}
 
 # Users creation (testing)
 
