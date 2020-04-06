@@ -105,12 +105,12 @@ data "aws_iam_policy" "AWSCodeCommitFullAccess" {
 
 
 ## Temporary policies
-resource "aws_iam_policy" "temporary_circleciworkshop_policy" {
-  name        = "temporary_circleciworkshop_policy"
+resource "aws_iam_policy" "Temporary_Interns_CloudwatchWS_policy" {
+  name        = "Temporary_Interns_CloudwatchWS_policy"
   path        = "/"
-  description = "Temporary permissions for the CircleCI workshop. Responsible: william.munoz"
+  description = "Temporary Policy for the devops interns intended for CloudWatch/CloudTrail workshop"
 
-  policy = file("${path.module}/policies/Temporary_CircleCIWorkshop_Services.json")
+  policy = file("${path.module}/policies/Temporary_Interns_CloudwatchWS_policy.json")
 }
 
 # Role Creation
@@ -224,6 +224,13 @@ resource "aws_iam_group_policy_attachment" "CodeCommitRestrictedAttachment_Inter
   group      = aws_iam_group.interns.id
   policy_arn = aws_iam_policy.Interns_CodeCommit_Policy.arn
 }
+
+# Temporary attachments
+resource "aws_iam_group_policy_attachment" "Temporary_Interns_CloudwatchWS_attachment" {
+  group      = aws_iam_group.interns-devops.id
+  policy_arn = aws_iam_policy.Temporary_Interns_CloudwatchWS_policy.arn
+}
+
 
 # Users creation (testing)
 
