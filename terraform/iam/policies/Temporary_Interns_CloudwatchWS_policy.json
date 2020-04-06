@@ -116,6 +116,12 @@
       ],
       "Effect": "Allow",
       "Resource": "*"
+    },
+    {
+      "Sid": "CloudFormationFullAccess",
+      "Action": "cloudformation:*",
+      "Effect": "Allow",
+      "Resource": "*"
     }
   ]
 }
