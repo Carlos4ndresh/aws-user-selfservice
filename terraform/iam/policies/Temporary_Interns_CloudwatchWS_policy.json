@@ -33,7 +33,8 @@
         "iam:UntagRole",
         "iam:UpdateRole",
         "iam:UpdateRoleDescription",
-        "iam:CreateInstanceProfile"
+        "iam:CreateInstanceProfile",
+        "iam:RemoveRoleFromInstanceProfile"
       ],
       "Effect": "Allow",
       "Resource": "*"
