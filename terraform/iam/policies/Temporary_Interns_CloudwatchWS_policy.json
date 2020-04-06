@@ -76,6 +76,12 @@
       "Action": "cloudformation:*",
       "Effect": "Allow",
       "Resource": "*"
+    },
+    {
+        "Sid": "EC2FullAccess",
+        "Action": "ec2:*",
+        "Effect": "Allow",
+        "Resource": "*"
     }
   ]
 }
