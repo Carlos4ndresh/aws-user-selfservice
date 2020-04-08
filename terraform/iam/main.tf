@@ -232,6 +232,10 @@ resource "aws_iam_group_policy_attachment" "CodeCommitRestrictedAttachment_Inter
 
 # Temporary attachments
 
+resource "aws_iam_group_policy_attachment" "temporary_try_permissions_attachment_j2devs" {
+  group      = aws_iam_group.junior_j2_developers.id
+  policy_arn = aws_iam_policy.Temporary_Try_Permissions_Policy.arn
+}
 
 # Users creation (testing)
 
