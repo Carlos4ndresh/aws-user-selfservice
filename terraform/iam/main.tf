@@ -32,6 +32,10 @@ resource "aws_iam_group" "devops_engineers" {
     name = "devops_engineers"
 }
 
+resource "aws_iam_group" "junior_j2_developers" {
+  name = "junior_j2_developers"
+}
+
 # Policy Creation
 
 resource "aws_iam_policy" "UserSelfManagement" {
@@ -105,6 +109,14 @@ data "aws_iam_policy" "AWSCodeCommitFullAccess" {
 
 
 ## Temporary policies
+
+resource "aws_iam_policy" "Temporary_Try_Permissions_Policy" {
+  name        = "Temporary_Try_Permissions_Policy"
+  path        = "/"
+  description = "Temporary Policy for J2 Junior Devs to try some serverless tech"
+
+  policy = file("${path.module}/policies/Temporary_Try_Permissions_Policy.json")
+}
 
 # Role Creation
 

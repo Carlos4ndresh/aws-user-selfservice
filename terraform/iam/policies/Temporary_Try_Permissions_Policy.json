@@ -1,0 +1,210 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "SQSFullAccess",
+      "Action": "sqs:*",
+      "Effect": "Allow",
+      "Resource": "*",
+      "Condition": {
+          "StringEquals": {
+              "aws:RequestedRegion": [
+                  "us-west-1",
+                  "us-west-2"
+                ]
+            }
+        }
+    },
+    {
+      "Sid": "SNSFullAccess",
+      "Action": "sns:*",
+      "Effect": "Allow",
+      "Resource": "*",
+      "Condition": {
+          "StringEquals": {
+              "aws:RequestedRegion": [
+                  "us-west-1",
+                  "us-west-2"
+                ]
+            }
+        }
+    },
+    {
+      "Sid": "CloudWatchLimited",
+      "Action": [
+        "cloudwatch:DeleteAlarms",
+        "cloudwatch:DeleteAnomalyDetector",
+        "cloudwatch:DeleteDashboards",
+        "cloudwatch:DescribeAlarmHistory",
+        "cloudwatch:DescribeAlarms",
+        "cloudwatch:DescribeAlarmsForMetric",
+        "cloudwatch:DescribeAnomalyDetectors",
+        "cloudwatch:DisableAlarmActions",
+        "cloudwatch:EnableAlarmActions",
+        "cloudwatch:GetDashboard",
+        "cloudwatch:GetMetricData",
+        "cloudwatch:GetMetricStatistics",
+        "cloudwatch:GetMetricWidgetImage",
+        "cloudwatch:ListDashboards",
+        "cloudwatch:ListMetrics",
+        "cloudwatch:ListTagsForResource",
+        "cloudwatch:PutAnomalyDetector",
+        "cloudwatch:PutDashboard",
+        "cloudwatch:PutMetricAlarm",
+        "cloudwatch:PutMetricData",
+        "cloudwatch:SetAlarmState",
+        "cloudwatch:TagResource",
+        "cloudwatch:UntagResource"
+      ],
+      "Effect": "Allow",
+      "Resource": "*",
+      "Condition": {
+          "StringEquals": {
+              "aws:RequestedRegion": [
+                  "us-west-1",
+                  "us-west-2"
+                ]
+            }
+        }
+    },
+    {
+      "Sid": "CloudWatchLogsLimited",
+      "Action": [
+        "logs:CancelExportTask",
+        "logs:CreateExportTask",
+        "logs:CreateLogDelivery",
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:DeleteDestination",
+        "logs:DeleteLogDelivery",
+        "logs:DeleteLogGroup",
+        "logs:DeleteLogStream",
+        "logs:DeleteMetricFilter",
+        "logs:DeleteResourcePolicy",
+        "logs:DeleteRetentionPolicy",
+        "logs:DeleteSubscriptionFilter",
+        "logs:DescribeDestinations",
+        "logs:DescribeExportTasks",
+        "logs:DescribeLogGroups",
+        "logs:DescribeLogStreams",
+        "logs:DescribeMetricFilters",
+        "logs:DescribeResourcePolicies",
+        "logs:DescribeSubscriptionFilters",
+        "logs:FilterLogEvents",
+        "logs:GetLogDelivery",
+        "logs:GetLogEvents",
+        "logs:GetLogGroupFields",
+        "logs:GetLogRecord",
+        "logs:GetQueryResults",
+        "logs:ListLogDeliveries",
+        "logs:ListTagsLogGroup",
+        "logs:PutDestination",
+        "logs:PutDestinationPolicy",
+        "logs:PutLogEvents",
+        "logs:PutMetricFilter",
+        "logs:PutResourcePolicy",
+        "logs:PutRetentionPolicy",
+        "logs:PutSubscriptionFilter",
+        "logs:TagLogGroup",
+        "logs:TestMetricFilter",
+        "logs:UntagLogGroup",
+        "logs:UpdateLogDelivery"
+      ],
+      "Effect": "Allow",
+      "Resource": "*",
+      "Condition": {
+          "StringEquals": {
+              "aws:RequestedRegion": [
+                  "us-west-1",
+                  "us-west-2"
+                ]
+            }
+        }
+    },
+    {
+      "Sid": "DynamoDBLimited",
+      "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:CreateTable",
+        "dynamodb:DeleteItem",
+        "dynamodb:DeleteTable",
+        "dynamodb:DescribeLimits",
+        "dynamodb:DescribeReservedCapacity",
+        "dynamodb:DescribeReservedCapacityOfferings",
+        "dynamodb:DescribeStream",
+        "dynamodb:DescribeTable",
+        "dynamodb:DescribeTimeToLive",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:ListContributorInsights",
+        "dynamodb:ListStreams",
+        "dynamodb:ListTables",
+        "dynamodb:ListTagsOfResource",
+        "dynamodb:PurchaseReservedCapacityOfferings",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:TagResource",
+        "dynamodb:UntagResource",
+        "dynamodb:UpdateItem",
+        "dynamodb:UpdateTable",
+        "dynamodb:UpdateTimeToLive"
+      ],
+      "Effect": "Allow",
+      "Resource": "*",
+      "Condition": {
+          "StringEquals": {
+              "aws:RequestedRegion": [
+                  "us-west-1",
+                  "us-west-2"
+                ]
+            }
+        }
+    },
+    {
+      "Sid": "LambdaFullAccess",
+      "Action": "lambda:*",
+      "Effect": "Allow",
+      "Resource": "*",
+      "Condition": {
+          "StringEquals": {
+              "aws:RequestedRegion": [
+                  "us-west-1",
+                  "us-west-2"
+                ]
+            }
+        }
+    },
+    {
+      "Sid": "APIGwExecuteFullAccess",
+      "Action": "execute-api:*",
+      "Effect": "Allow",
+      "Resource": "*",
+      "Condition": {
+          "StringEquals": {
+              "aws:RequestedRegion": [
+                  "us-west-1",
+                  "us-west-2"
+                ]
+            }
+        }
+    },
+    {
+      "Sid": "APIGwFullAccess",
+      "Action": "apigateway:*",
+      "Effect": "Allow",
+      "Resource": "*",
+      "Condition": {
+          "StringEquals": {
+              "aws:RequestedRegion": [
+                  "us-west-1",
+                  "us-west-2"
+                ]
+            }
+        }
+    }
+  ]
+}
