@@ -71,12 +71,12 @@ resource "aws_iam_policy" "Interns_CodeCommit_Policy" {
   policy = file("${path.module}/policies/Interns_CodeCommit_Policy.json")
 }
 
-resource "aws_iam_policy" "Mentors_CodeCommit_Policy" {
-  name        = "Mentors_CodeCommit_Policy"
+resource "aws_iam_policy" "EC2_CodeCommit_Policy" {
+  name        = "EC2_CodeCommit_Policy"
   path        = "/"
   description = "CodeCommit Policy for interns mentors"
 
-  policy = file("${path.module}/policies/Mentors_CodeCommit_Policy.json")
+  policy = file("${path.module}/policies/EC2_CodeCommit_Policy.json")
 }
 
 resource "aws_iam_policy" "Interns_Devops_SNS_SQS_Permissions" {
@@ -103,8 +103,28 @@ resource "aws_iam_policy" "routrip_developers_CodeCommit_Policy" {
   policy = file("${path.module}/policies/Routrip_Developers_CodeCommit_Policy.json")
 }
 
+resource "aws_iam_policy" "EC2_CloudWatchLogs_Policy" {
+  name        = "EC2_CloudWatchLogs_Policy"
+  path        = "/"
+  description = "Policy for the EC2 access to put logs on cloudwatch"
+
+  policy = file("${path.module}/policies/EC2_CloudWatchLogs_policy.json")
+}
+
+resource "aws_iam_policy" "Mentors_SSM_SessionManager_Policy" {
+  name        = "Mentors_SSM_SessionManager_Policy"
+  path        = "/"
+  description = "Policy for giving SSM Session Manager Access to mentors"
+
+  policy = file("${path.module}/policies/Mentors_SSM_SessionManager_policy.json")
+}
+
 data "aws_iam_policy" "AWSCodeCommitFullAccess" {
   arn = "arn:aws:iam::aws:policy/AWSCodeCommitFullAccess"
+}
+
+data "aws_iam_policy" "AWSSSMManagedInstanceCorePolicy" {
+  arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
 
@@ -213,7 +233,17 @@ EOF
 
 resource "aws_iam_role_policy_attachment" "Mentors_CodeCommit_readonly_role_attachment" {
   role       =  aws_iam_role.EC2_CodeCommit_ReadOnly_role.name
-  policy_arn = aws_iam_policy.Mentors_CodeCommit_Policy.arn
+  policy_arn = aws_iam_policy.EC2_CodeCommit_Policy.arn
+}
+
+resource "aws_iam_role_policy_attachment" "SystemsManager_InstanceCore_Attachment" {
+  role       =  aws_iam_role.EC2_CodeCommit_ReadOnly_role.name
+  policy_arn =  data.aws_iam_policy.AWSSSMManagedInstanceCorePolicy.arn
+}
+
+resource "aws_iam_role_policy_attachment" "CloudWatchLogs_EC2_Attachment" {
+  role       =  aws_iam_role.EC2_CodeCommit_ReadOnly_role.name
+  policy_arn =  aws_iam_policy.EC2_CloudWatchLogs_Policy.arn
 }
 
 resource "aws_iam_role_policy_attachment" "user_creation_lambda_role_attachment" {
@@ -260,6 +290,11 @@ resource "aws_iam_group_policy_attachment" "Interns_Devops_IAM_Permissions_Attac
 resource "aws_iam_group_policy_attachment" "CodeCommitRestrictedAttachment_Interns" {
   group      = aws_iam_group.interns.id
   policy_arn = aws_iam_policy.Interns_CodeCommit_Policy.arn
+}
+
+resource "aws_iam_group_policy_attachment" "SystemManager_Mentors" {
+  group      = aws_iam_group.mentors.id
+  policy_arn = aws_iam_policy.Mentors_SSM_SessionManager_Policy.arn
 }
 
 # Temporary attachments

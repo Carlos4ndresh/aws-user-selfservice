@@ -33,6 +33,7 @@ resource "aws_instance" "ec2_bastion" {
     owner = var.owner,
     project = var.project,
     provisioner = var.provisioner,
-    env = var.env
+    env = var.env,
+    name = "CodeCommitBastion"
   }
 }

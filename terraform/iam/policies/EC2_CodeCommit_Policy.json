@@ -36,6 +36,21 @@
             ],
             "Effect": "Allow",
             "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Sid": "TagAndResourceGroupAccess",
+            "Action": [
+                "resource-groups:*",
+                "cloudformation:DescribeStackResources",
+                "cloudformation:ListStackResources",
+                "tag:GetResources",
+                "tag:TagResources",
+                "tag:UntagResources",
+                "tag:getTagKeys",
+                "tag:getTagValues"
+            ],
+            "Resource": "*"
         }
     ]
 }
