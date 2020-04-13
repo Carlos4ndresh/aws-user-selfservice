@@ -37,3 +37,25 @@ resource "aws_instance" "ec2_bastion" {
     name = "CodeCommitBastion"
   }
 }
+
+
+resource "aws_ssm_document" "session_manager_preferences" {
+  name            = "SSM-SessionManagerShell"
+  document_type   = "Session"
+  document_format = "JSON"
+
+  content = <<DOC
+{
+    "schemaVersion": "1.0",
+    "description": "Document to hold regional settings for Session Manager",
+    "sessionType": "Standard_Stream",
+    "inputs": {
+        "s3BucketName": "${var.s3_logs_bucket}",
+        "s3KeyPrefix": "ssmLogs",
+        "s3EncryptionEnabled": "true",
+        "cloudWatchLogGroupName": "/ssm/session-logs",
+        "cloudWatchEncryptionEnabled": "true"
+    }
+}
+DOC
+}

@@ -34,6 +34,7 @@ module "ec2" {
     security_group_id = module.vpc.security_group_id
     instance_profile = module.iam.ec2_instance_profile
     subnet_id = module.vpc.subnet_id
+    s3_logs_bucket = module.s3_resources.log_bucket_name
 }
 
 module "s3_resources" {
@@ -43,13 +44,4 @@ module "s3_resources" {
     owner = var.owner
     env = var.env
     region = var.region
-}
-
-module "session-manager-settings" {
-  source            = "gazoakley/session-manager-settings/aws"
-  s3_bucket_name    = module.s3_resources.log_bucket_name
-  s3_key_prefix     = "ssmLogs"
-  s3_encryption_enabled = true
-  cloudwatch_log_group_name = "/ssm/session-logs"
-  cloudwatch_encryption_enabled = true
 }
