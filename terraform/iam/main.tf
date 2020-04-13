@@ -238,7 +238,7 @@ resource "aws_iam_group_policy_attachment" "LambdaWorkshopPolicyAttachment_Inter
 }
 
 resource "aws_iam_group_policy_attachment" "LambdaWorkshopPolicyAttachment_Instructors" {
-  group      = aws_iam_group.devops_engineers
+  group      = aws_iam_group.devops_engineers.id
   policy_arn = aws_iam_policy.Interns_LambdaWorkshopPolicy.arn
 }
 
