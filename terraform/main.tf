@@ -44,3 +44,12 @@ module "s3_resources" {
     env = var.env
     region = var.region
 }
+
+module "session-manager-settings" {
+  source            = "gazoakley/session-manager-settings/aws"
+  s3_bucket_name    = module.s3_resources.log_bucket_name
+  s3_key_prefix     = "ssmLogs"
+  s3_encryption_enabled = true
+  cloudwatch_log_group_name = "/ssm/session-logs"
+  cloudwatch_encryption_enabled = true
+}
