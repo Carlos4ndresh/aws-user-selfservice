@@ -138,6 +138,15 @@ resource "aws_iam_policy" "Interns_LambdaWorkshopPolicy" {
   policy = file("${path.module}/policies/Interns_LambdaWorkshopPolicy.json")
 }
 
+resource "aws_iam_policy" "Temporary_Try_Permissions_Policy" {
+  name        = "Temporary_Try_Permissions_Policy"
+  path        = "/"
+  description = "LambdaWorkshop Temporary Policy for interns"
+
+  policy = file("${path.module}/policies/Temporary_Try_Permissions_Policy.json")
+}
+
+
 # Role Creation
 
 resource "aws_iam_role" "user_creation_lambda_role" {
@@ -313,6 +322,12 @@ resource "aws_iam_role_policy_attachment" "InternsLambdaWorkshopRole_Attachment"
   role       =  aws_iam_role.InternsLambdaWorkshopRole.name
   policy_arn = aws_iam_policy.Interns_LambdaWorkshopPolicy.arn
 }
+
+resource "aws_iam_group_policy_attachment" "Temporary_Try_Permissions_J2_Attachment" {
+  group      = aws_iam_group.junior_j2_developers.id
+  policy_arn = aws_iam_policy.Temporary_Try_Permissions_Policy.arn
+}
+
 
 # Users creation (testing)
 
