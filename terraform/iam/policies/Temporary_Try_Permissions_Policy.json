@@ -170,10 +170,9 @@
       "Effect": "Allow",
       "Resource": "*",
       "Condition": {
-          "StringEquals": {
+          "StringNotEquals": {
               "aws:RequestedRegion": [
-                  "us-west-1",
-                  "us-west-2"
+                  "us-east-1"
                 ]
             }
         }
