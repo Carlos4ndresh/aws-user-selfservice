@@ -177,6 +177,38 @@ EOF
   }
 }
 
+# Temporary role creation
+
+resource "aws_iam_role" "InternsLambdaWorkshopRole" {
+  name = "Interns_LambdaWorkshop_Role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": [
+          "lambda.amazonaws.com"
+        ]
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+
+  tags = {
+      env = "Production",
+      Provisioner = var.provisioner,
+      owner = "carlos.herrera",
+      project = "Infrastructure Manager"
+  }
+
+}
+
 # Policy Attachment section
 
 resource "aws_iam_role_policy_attachment" "Mentors_CodeCommit_readonly_role_attachment" {
@@ -239,6 +271,11 @@ resource "aws_iam_group_policy_attachment" "LambdaWorkshopPolicyAttachment_Inter
 
 resource "aws_iam_group_policy_attachment" "LambdaWorkshopPolicyAttachment_Instructors" {
   group      = aws_iam_group.devops_engineers.id
+  policy_arn = aws_iam_policy.Interns_LambdaWorkshopPolicy.arn
+}
+
+resource "aws_iam_role_policy_attachment" "InternsLambdaWorkshopRole_Attachment" {
+  role       =  aws_iam_role.InternsLambdaWorkshopRole.name
   policy_arn = aws_iam_policy.Interns_LambdaWorkshopPolicy.arn
 }
 
