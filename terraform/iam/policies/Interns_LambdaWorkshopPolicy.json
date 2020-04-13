@@ -1,0 +1,28 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetRole",
+                "iam:GetPolicyVersion",
+                "iam:GetPolicy",
+                "s3:*",
+                "logs:*",
+                "cloudformation:DescribeStackResources",
+                "dynamodb:*",
+                "iam:ListRoles",
+                "resource-groups:ListGroups",
+                "sqs:*",
+                "iam:PassRole",
+                "cloudwatch:*",
+                "iam:ListAttachedRolePolicies",
+                "kms:ListAliases",
+                "lambda:*",
+                "iam:ListRolePolicies"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

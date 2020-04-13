@@ -110,12 +110,12 @@ data "aws_iam_policy" "AWSCodeCommitFullAccess" {
 
 ## Temporary policies
 
-resource "aws_iam_policy" "Temporary_Try_Permissions_Policy" {
-  name        = "Temporary_Try_Permissions_Policy"
+resource "aws_iam_policy" "Interns_LambdaWorkshopPolicy" {
+  name        = "Interns_LambdaWorkshopPolicy"
   path        = "/"
-  description = "Temporary Policy for J2 Junior Devs to try some serverless tech"
+  description = "LambdaWorkshop Temporary Policy for interns"
 
-  policy = file("${path.module}/policies/Temporary_Try_Permissions_Policy.json")
+  policy = file("${path.module}/policies/Interns_LambdaWorkshopPolicy.json")
 }
 
 # Role Creation
@@ -232,9 +232,14 @@ resource "aws_iam_group_policy_attachment" "CodeCommitRestrictedAttachment_Inter
 
 # Temporary attachments
 
-resource "aws_iam_group_policy_attachment" "temporary_try_permissions_attachment_j2devs" {
-  group      = aws_iam_group.junior_j2_developers.id
-  policy_arn = aws_iam_policy.Temporary_Try_Permissions_Policy.arn
+resource "aws_iam_group_policy_attachment" "LambdaWorkshopPolicyAttachment_Interns" {
+  group      = aws_iam_group.interns-devops.id
+  policy_arn = aws_iam_policy.Interns_LambdaWorkshopPolicy.arn
+}
+
+resource "aws_iam_group_policy_attachment" "LambdaWorkshopPolicyAttachment_Instructors" {
+  group      = aws_iam_group.devops_engineers
+  policy_arn = aws_iam_policy.Interns_LambdaWorkshopPolicy.arn
 }
 
 # Users creation (testing)
