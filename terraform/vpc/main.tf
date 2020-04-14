@@ -162,7 +162,7 @@ resource "aws_security_group_rule" "allow_endpoints_443_to_bastion" {
 
 resource "aws_vpc_endpoint" "ssm_messages" {
   vpc_id            = aws_vpc.ec2_bastion_vpc.id
-  service_name      = "com.amazonaws.eu-east-1.ssmmessages"
+  service_name      = "com.amazonaws.us-east-1.ssmmessages"
   vpc_endpoint_type = "Interface"
   subnet_ids = [aws_subnet.ec2_bastion_subnet.id]
   security_group_ids = [ aws_security_group.endpoints_sg.id ]
@@ -171,7 +171,7 @@ resource "aws_vpc_endpoint" "ssm_messages" {
 
 resource "aws_vpc_endpoint" "ec2messages" {
   vpc_id            = aws_vpc.ec2_bastion_vpc.id
-  service_name      = "com.amazonaws.eu-east-1.ec2messages"
+  service_name      = "com.amazonaws.us-east-1.ec2messages"
   vpc_endpoint_type = "Interface"
   subnet_ids = [aws_subnet.ec2_bastion_subnet.id]
   security_group_ids = [ aws_security_group.endpoints_sg.id ]
@@ -180,7 +180,7 @@ resource "aws_vpc_endpoint" "ec2messages" {
 
 resource "aws_vpc_endpoint" "ssm" {
   vpc_id            = aws_vpc.ec2_bastion_vpc.id
-  service_name      = "com.amazonaws.eu-east-1.ssm"
+  service_name      = "com.amazonaws.us-east-1.ssm"
   vpc_endpoint_type = "Interface"
   subnet_ids = [aws_subnet.ec2_bastion_subnet.id]
   security_group_ids = [ aws_security_group.endpoints_sg.id ]
