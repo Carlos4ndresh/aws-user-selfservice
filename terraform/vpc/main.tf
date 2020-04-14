@@ -187,6 +187,24 @@ resource "aws_vpc_endpoint" "ssm" {
   private_dns_enabled = true
 }
 
+resource "aws_vpc_endpoint" "codecommit_git_endpoint" {
+  vpc_id            = aws_vpc.ec2_bastion_vpc.id
+  service_name      = "com.amazonaws.us-east-1.git-codecommit"
+  vpc_endpoint_type = "Interface"
+  subnet_ids = [aws_subnet.ec2_bastion_subnet.id]
+  security_group_ids = [ aws_security_group.endpoints_sg.id ]
+  private_dns_enabled = true
+}
+
+resource "aws_vpc_endpoint" "codecommit_api_endpoint" {
+  vpc_id            = aws_vpc.ec2_bastion_vpc.id
+  service_name      = "com.amazonaws.us-east-1.codecommit"
+  vpc_endpoint_type = "Interface"
+  subnet_ids = [aws_subnet.ec2_bastion_subnet.id]
+  security_group_ids = [ aws_security_group.endpoints_sg.id ]
+  private_dns_enabled = true
+}
+
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
   description = "Allow SSH inbound traffic from mentors"
