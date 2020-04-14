@@ -59,3 +59,12 @@ resource "aws_ssm_document" "session_manager_preferences" {
 }
 DOC
 }
+
+resource "aws_ssm_association" "session_prefs_association" {
+  name = aws_ssm_document.session_manager_preferences.name
+
+  targets {
+    key    = "InstanceIds"
+    values = [aws_instance.ec2_bastion.id]
+  }
+}

@@ -252,12 +252,96 @@ user_names = {
   "test" = {
     force_destroy = true
     email_address     = "test.test@endava.com"
-    group_memberships = [ "non_privileged_users", "junior_j2_developers", "mentors" ]
+    group_memberships = [ "non_privileged_users", "mentors" ]
     tags = {
       deliveryUnit = "Medellin",
       site = "aguacatala",
       type = "DevOps Engineer",
       project = "J2"
+    }
+  }
+
+  "jorge.ordonezmendez" = {
+    force_destroy = true
+    email_address     = "jorge.ordonezmendez@endava.com"
+    group_memberships = [ "non_privileged_users", "mentors" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "FrontEnd Engineer",
+      project = "Internship"
+    }
+  }
+
+  "hernan.silva" = {
+    force_destroy = true
+    email_address     = "hernan.silva@endava.com"
+    group_memberships = [ "non_privileged_users", "mentors" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "FrontEnd Engineer",
+      project = "Internship"
+    }
+  }
+
+  "michele.ancheta" = {
+    force_destroy = true
+    email_address     = "michele.ancheta@endava.com"
+    group_memberships = [ "non_privileged_users", "mentors" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "FrontEnd Engineer",
+      project = "Internship"
+    }
+  }
+
+  "kevin.gomez" = {
+    force_destroy = true
+    email_address     = "kevin.gomez@endava.com"
+    group_memberships = [ "non_privileged_users", "mentors" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "FrontEnd Engineer",
+      project = "Internship"
+    }
+  }
+
+  "carlos.belalcazar" = {
+    force_destroy = true
+    email_address     = "carlos.belalcazar@endava.com"
+    group_memberships = [ "non_privileged_users", "mentors" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "FrontEnd Engineer",
+      project = "Internship"
+    }
+  }
+
+  "luis.espinosa" = {
+    force_destroy = true
+    email_address     = "luis.espinosa@endava.com"
+    group_memberships = [ "non_privileged_users", "mentors" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "BackEnd Engineer",
+      project = "Internship"
+    }
+  }
+
+  "alejandro.cuervo" = {
+    force_destroy = true
+    email_address     = "alejandro.cuervo@endava.com"
+    group_memberships = [ "non_privileged_users", "mentors" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "BackEnd Engineer",
+      project = "Internship"
     }
   }
 
