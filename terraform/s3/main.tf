@@ -48,6 +48,16 @@ resource "aws_s3_bucket" "audit_log_bucket" {
   acl    = "log-delivery-write"
   region = var.region
 
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        kms_master_key_id = aws_kms_key.s3_encryption_key.arn
+        sse_algorithm     = "aws:kms"
+      }
+    }
+  }
+
+  
   tags = {
     owner = var.owner,
     project = var.project,
