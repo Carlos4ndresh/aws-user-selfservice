@@ -39,25 +39,25 @@ resource "aws_instance" "ec2_bastion" {
 }
 
 
-resource "aws_ssm_document" "mentors_session_manager_preferences" {
-  name            = "SSM-SessionManagerShellPermissions"
-  document_type   = "Session"
-  document_format = "JSON"
+# resource "aws_ssm_document" "mentors_session_manager_preferences" {
+#   name            = "SSM-SessionManagerShellPermissions"
+#   document_type   = "Session"
+#   document_format = "JSON"
 
-  content = <<DOC
-{
-    "schemaVersion": "1.0",
-    "description": "Document to hold regional settings for Session Manager",
-    "sessionType": "Standard_Stream",
-    "inputs": {
-        "s3BucketName": "${var.s3_logs_bucket}",
-        "s3KeyPrefix": "ssmLogs",
-        "s3EncryptionEnabled": "true",
-        "cloudWatchLogGroupName": "/ssm/session-logs",
-        "cloudWatchEncryptionEnabled": "true",
-        "runAsEnabled": true,
-        "runAsDefaultUser": "ubuntu"
-    }
-}
-DOC
-}
+#   content = <<DOC
+# {
+#     "schemaVersion": "1.0",
+#     "description": "Document to hold regional settings for Session Manager",
+#     "sessionType": "Standard_Stream",
+#     "inputs": {
+#         "s3BucketName": "${var.s3_logs_bucket}",
+#         "s3KeyPrefix": "ssmLogs",
+#         "s3EncryptionEnabled": "false",
+#         "cloudWatchLogGroupName": "/ssm/session-logs",
+#         "cloudWatchEncryptionEnabled": "false",
+#         "runAsEnabled": true,
+#         "runAsDefaultUser": "ubuntu"
+#     }
+# }
+# DOC
+# }
