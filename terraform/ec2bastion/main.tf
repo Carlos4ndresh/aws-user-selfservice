@@ -40,7 +40,7 @@ resource "aws_instance" "ec2_bastion" {
 
 
 resource "aws_ssm_document" "session_manager_preferences" {
-  name            = "SSM-SessionManagerShell"
+  name            = "SSM-SessionManagerRunShell"
   document_type   = "Session"
   document_format = "JSON"
 
@@ -58,13 +58,4 @@ resource "aws_ssm_document" "session_manager_preferences" {
     }
 }
 DOC
-}
-
-resource "aws_ssm_association" "session_prefs_association" {
-  name = aws_ssm_document.session_manager_preferences.name
-
-  targets {
-    key    = "InstanceIds"
-    values = [aws_instance.ec2_bastion.id]
-  }
 }
