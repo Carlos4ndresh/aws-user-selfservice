@@ -31,7 +31,8 @@ module "ec2" {
     owner = var.owner
     env = var.env
     key_pair = var.key_pair
-    security_group_id = module.vpc.security_group_id
+    # security_group_id = module.vpc.security_group_id
+    security_group_id = module.vpc.bastionsg_id
     instance_profile = module.iam.ec2_instance_profile
     subnet_id = module.vpc.subnet_id
     s3_logs_bucket = module.s3_resources.log_bucket_name

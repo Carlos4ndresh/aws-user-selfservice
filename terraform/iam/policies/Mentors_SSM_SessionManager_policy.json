@@ -48,7 +48,7 @@
                 "ssm:GetDocument"
             ],
             "Resource": [
-                "arn:aws:ssm:*:446416709302:document/SSM-SessionManagerRunShell" 
+                "arn:aws:ssm:*:446416709302:document/SSM-SessionManagerShellPermissions" 
             ],
             "Condition": {
                 "BoolIfExists": {
