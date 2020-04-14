@@ -16,7 +16,7 @@ phases:
       - "ls -larths"
       - terraform init
       - terraform validate
-      - terraform plan -var-file=../terraform.tfvars<
+      - terraform plan -var-file=../terraform.tfvars
 
   build:
     commands:
