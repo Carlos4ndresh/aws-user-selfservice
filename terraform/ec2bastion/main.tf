@@ -53,8 +53,8 @@ resource "aws_ssm_document" "mentors_session_manager_preferences" {
         "s3BucketName": "${var.s3_logs_bucket}",
         "s3KeyPrefix": "ssmLogs",
         "s3EncryptionEnabled": "false",
-        "cloudWatchLogGroupName": "/ssm/logs",
-        "cloudWatchEncryptionEnabled": "false"
+        "cloudWatchLogGroupName": "",
+        "cloudWatchEncryptionEnabled": ""
     }
 }
 DOC
