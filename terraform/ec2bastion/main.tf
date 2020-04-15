@@ -61,7 +61,7 @@ resource "aws_ssm_document" "mentors_session_manager_preferences" {
     "cloudWatchEncryptionEnabled":true,
     "kmsKeyId":"${aws_kms_key.ssm_session_manager_logs_key.id}",
     "runAsEnabled": "true",
-    "runAsDefaultUser": "ubuntu"
+    "runAsDefaultUser": "ubuntu "
   }
 }
 DOC
