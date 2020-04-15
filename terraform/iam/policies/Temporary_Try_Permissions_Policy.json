@@ -224,7 +224,8 @@
         "iam:TagRole",
         "iam:UntagRole",
         "iam:UpdateRole",
-        "iam:UpdateRoleDescription"
+        "iam:UpdateRoleDescription",
+        "iam:ListPolicies"
       ],
       "Effect": "Allow",
       "Resource": "*"
