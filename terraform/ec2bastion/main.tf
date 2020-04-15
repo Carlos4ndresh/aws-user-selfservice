@@ -38,6 +38,7 @@ resource "aws_instance" "ec2_bastion" {
   }
 }
 
+# Cloudwatch log group has to be created beforehand
 
 # resource "aws_ssm_document" "mentors_session_manager_preferences" {
 #   name            = "SSM-SessionManagerRunShell"
