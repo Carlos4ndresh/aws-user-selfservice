@@ -125,15 +125,6 @@ resource "aws_security_group_rule" "allow_bastion_ssh_to_host" {
   security_group_id = aws_security_group.bastion_sg.id
 }
 
-resource "aws_security_group_rule" "allow_full_egress_bastion" {
-  type = "egress"
-  from_port = 0
-  to_port = 0
-  protocol = "-1"
-  cidr_blocks = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.bastion_sg.id
-}
-
 #=============================================================================#
 #                    HOST SECURITY GROUP ROLES
 #=============================================================================#
