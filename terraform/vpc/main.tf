@@ -205,37 +205,6 @@ resource "aws_vpc_endpoint" "codecommit_api_endpoint" {
   private_dns_enabled = true
 }
 
-## insert cloudwatch logs, s3 and kms endpoints
-
-resource "aws_vpc_endpoint" "cloudwatch_logs_endpoint" {
-  vpc_id            = aws_vpc.ec2_bastion_vpc.id
-  service_name      = "com.amazonaws.us-east-1.logs"
-  vpc_endpoint_type = "Interface"
-  subnet_ids = [aws_subnet.ec2_bastion_subnet.id]
-  security_group_ids = [ aws_security_group.endpoints_sg.id ]
-  private_dns_enabled = true
-}
-
-resource "aws_vpc_endpoint" "kms_logs_endpoint" {
-  vpc_id            = aws_vpc.ec2_bastion_vpc.id
-  service_name      = "com.amazonaws.us-east-1.kms"
-  vpc_endpoint_type = "Interface"
-  subnet_ids = [aws_subnet.ec2_bastion_subnet.id]
-  security_group_ids = [ aws_security_group.endpoints_sg.id ]
-  private_dns_enabled = true
-}
-
-resource "aws_vpc_endpoint" "s3_endpoint" {
-  vpc_id            = aws_vpc.ec2_bastion_vpc.id
-  service_name      = "com.amazonaws.us-east-1.s3"
-}
-
-resource "aws_vpc_endpoint_route_table_association" "s3_endpoint_association" {
-  route_table_id  = aws_default_route_table.default_route_table.default_route_table_id
-  vpc_endpoint_id = aws_vpc_endpoint.s3_endpoint.id
-}
-
-
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
   description = "Allow SSH inbound traffic from mentors"
