@@ -50,13 +50,11 @@ resource "aws_ssm_document" "mentors_session_manager_preferences" {
     "description": "Document to hold regional settings for Session Manager",
     "sessionType": "Standard_Stream",
     "inputs": {
-        "s3BucketName": "",
-        "s3KeyPrefix": "",
-        "s3EncryptionEnabled": "",
-        "cloudWatchLogGroupName": "",
-        "cloudWatchEncryptionEnabled": "",
-        "runAsEnabled": true,
-        "runAsDefaultUser": "ubuntu"
+        "s3BucketName": "${var.s3_logs_bucket}",
+        "s3KeyPrefix": "ssmLogs",
+        "s3EncryptionEnabled": "false",
+        "cloudWatchLogGroupName": "/ssm/logs",
+        "cloudWatchEncryptionEnabled": "false",
     }
 }
 DOC
