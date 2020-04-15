@@ -5,43 +5,19 @@
             "Effect": "Allow",
             "Sid": "CloudWatchLogAccess",
             "Action": [
-                "logs:AssociateKmsKey",
-                "logs:CreateExportTask",
-                "logs:CreateLogDelivery",
-                "logs:CreateLogGroup",
                 "logs:CreateLogStream",
-                "logs:DescribeDestinations",
-                "logs:DescribeExportTasks",
-                "logs:DescribeLogGroups",
-                "logs:DescribeLogStreams",
-                "logs:DescribeSubscriptionFilters",
-                "logs:FilterLogEvents",
-                "logs:GetLogDelivery",
-                "logs:GetLogEvents",
-                "logs:GetLogGroupFields",
-                "logs:GetLogRecord",
-                "logs:ListLogDeliveries",
-                "logs:ListTagsLogGroup",
-                "logs:PutDestination",
-                "logs:PutDestinationPolicy",
                 "logs:PutLogEvents",
-                "logs:PutRetentionPolicy",
-                "logs:PutSubscriptionFilter",
-                "logs:TagLogGroup"
+                "logs:DescribeLogGroups",
+                "logs:DescribeLogStreams"
             ],
             "Resource": "*"
         },
         {
             "Effect": "Allow",
             "Action": [
-                "s3:GetEncryptionConfiguration",
                 "s3:GetObject",
-                "s3:GetObjectAcl",
-                "s3:GetObjectVersion",
-                "s3:GetObjectVersionAcl",
                 "s3:PutObject",
-                "s3:PutObjectAcl",
-                "s3:PutObjectTagging"
+                "s3:PutObjectAcl"
             ],
             "Resource": "arn:aws:s3:::endava-med-bucket-log-audit/*"
         },

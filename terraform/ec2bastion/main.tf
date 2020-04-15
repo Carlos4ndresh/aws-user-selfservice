@@ -38,10 +38,10 @@ resource "aws_instance" "ec2_bastion" {
   }
 }
 
-# resource "aws_kms_key" "ssm_session_manager_logs_key" {
-#   description             = "KMS key for logs in SSM Session Manager"
-#   deletion_window_in_days = 10
-# }
+resource "aws_kms_key" "ssm_session_manager_logs_key" {
+  description             = "KMS key for logs in SSM Session Manager"
+  deletion_window_in_days = 10
+}
 
 resource "aws_ssm_document" "mentors_session_manager_preferences" {
   name            = "SSM-SessionManagerRunShell"
@@ -56,10 +56,10 @@ resource "aws_ssm_document" "mentors_session_manager_preferences" {
   "inputs":{
     "s3BucketName":"${var.s3_logs_bucket}",
     "s3KeyPrefix":"ssmLogs",
-    "s3EncryptionEnabled":false,
+    "s3EncryptionEnabled":true,
     "cloudWatchLogGroupName":"/ssm/session-logs",
-    "cloudWatchEncryptionEnabled":false,
-    "kmsKeyId":""
+    "cloudWatchEncryptionEnabled":true,
+    "kmsKeyId":"${aws_kms_key.ssm_session_manager_logs_key.id}"
   }
 }
 DOC
