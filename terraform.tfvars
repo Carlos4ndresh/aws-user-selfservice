@@ -258,7 +258,6 @@ user_names = {
       site = "aguacatala",
       type = "DevOps Engineer",
       project = "J2",
-      SSMSessionRunAs = "ubuntu"
     }
   }
 
