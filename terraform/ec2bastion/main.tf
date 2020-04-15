@@ -54,12 +54,12 @@ resource "aws_ssm_document" "mentors_session_manager_preferences" {
   "description":"Session Document Example JSON Template",
   "sessionType":"Standard_Stream",
   "inputs":{
-    "s3BucketName":"${var.s3_logs_bucket}",
-    "s3KeyPrefix":"ssmLogs",
-    "s3EncryptionEnabled":true,
+    "s3BucketName":"",
+    "s3KeyPrefix":"",
+    "s3EncryptionEnabled":false,
     "cloudWatchLogGroupName":"/ssm/session-logs",
-    "cloudWatchEncryptionEnabled":true,
-    "kmsKeyId":"${aws_kms_key.ssm_session_manager_logs_key.id}",
+    "cloudWatchEncryptionEnabled":false,
+    "kmsKeyId":"",
     "runAsEnabled": "true",
     "runAsDefaultUser": "ubuntu"
   }
