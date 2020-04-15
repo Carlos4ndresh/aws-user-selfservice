@@ -54,9 +54,7 @@ resource "aws_ssm_document" "mentors_session_manager_preferences" {
         "s3KeyPrefix": "ssmLogs",
         "s3EncryptionEnabled": "true",
         "cloudWatchLogGroupName": "/ssm/session-logs",
-        "cloudWatchEncryptionEnabled": "true",
-        "runAsEnabled": true,
-        "runAsDefaultUser": "ubuntu"
+        "cloudWatchEncryptionEnabled": "true"
     }
 }
 DOC
