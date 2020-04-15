@@ -19,7 +19,7 @@
                 "s3:PutObject",
                 "s3:PutObjectAcl"
             ],
-            "Resource": "arn:aws:s3:::endava-med-bucket-log-audit/*"
+            "Resource": "arn:aws:s3:::endava-med-bucket-log-audit/ssmLogs"
         },
         {
             "Effect": "Allow",
