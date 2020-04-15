@@ -257,7 +257,20 @@ user_names = {
       deliveryUnit = "Medellin",
       site = "aguacatala",
       type = "DevOps Engineer",
-      project = "J2"
+      project = "J2",
+      SSMSessionRunAs = "ubuntu"
+    }
+  }
+
+  "catherine.cruz" = {
+    force_destroy = true
+    email_address     = "catherine.cruz@endava.com"
+    group_memberships = [ "non_privileged_users", "mentors" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "aguacatala",
+      type = "DevOps Engineer",
+      project = "Internship"
     }
   }
 
