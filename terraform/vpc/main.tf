@@ -90,7 +90,7 @@ resource "aws_route" "internet_route" {
   route_table_id            = aws_default_route_table.default_route_table.id
   destination_cidr_block    = "0.0.0.0/0"
   depends_on                = [aws_nat_gateway.nat_gw_for_packagedownload]
-  gateway_id = aws_nat_gateway.nat_gw_for_packagedownload.id
+  nat_gateway_id = aws_nat_gateway.nat_gw_for_packagedownload.id
 }
 
 resource "aws_eip" "nat_gateway_elastic_ip" {
