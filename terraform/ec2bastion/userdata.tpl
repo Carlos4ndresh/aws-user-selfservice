@@ -13,6 +13,7 @@ runuser -l ubuntu -c "git config --global credential.UseHttpPath true"
 echo "****Cloning Git repositories Ubuntu ****"
 runuser -l ubuntu -c "git clone -v https://git-codecommit.us-east-1.amazonaws.com/v1/repos/WeCruit-Backend"
 runuser -l ubuntu -c "git clone -v https://git-codecommit.us-east-1.amazonaws.com/v1/repos/WeCruit-Frontend"
+echo "****Cloning Git repositories DevOps ****"
 runuser -l ubuntu -c "git clone -v https://git-codecommit.us-east-1.amazonaws.com/v1/repos/WeCruit-Devops"
 
 # echo "****Configuring Git SSM-USER*****"
