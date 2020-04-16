@@ -15,7 +15,8 @@
             ],
             "Resource": [
                 "arn:aws:codecommit:us-east-1:446416709302:WeCruit-Backend",
-                "arn:aws:codecommit:us-east-1:446416709302:WeCruit-Frontend"
+                "arn:aws:codecommit:us-east-1:446416709302:WeCruit-Frontend",
+                "arn:aws:codecommit:us-east-1:446416709302:WeCruit-Devops"
             ]
         },
         {
