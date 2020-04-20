@@ -146,6 +146,14 @@ resource "aws_iam_policy" "Interns_StorageWorkshopPolicy" {
   policy = file("${path.module}/policies/Interns_AWS_Storage_Workshop_policy.json")
 }
 
+resource "aws_iam_policy" "Interns_CloudFormationWorkshopPolicy" {
+  name        = "Interns_StorageWorkshopPolicy"
+  path        = "/"
+  description = "Storage Workshop Temporary Policy for interns"
+
+  policy = file("${path.module}/policies/Interns_CloudFormation_Workshop_policy.json")
+}
+
 resource "aws_iam_policy" "Temporary_Try_Permissions_Policy" {
   name        = "Temporary_Try_Permissions_Policy"
   path        = "/"
@@ -334,6 +342,11 @@ resource "aws_iam_group_policy_attachment" "StorageWorkshopPolicyAttachment_Inst
 resource "aws_iam_group_policy_attachment" "StorageWorkshopPolicyAttachment_Interns" {
   group      = aws_iam_group.interns-devops.id
   policy_arn = aws_iam_policy.Interns_StorageWorkshopPolicy.arn
+}
+
+resource "aws_iam_group_policy_attachment" "CloudFormationWorkshopPolicyAttachment_Interns" {
+  group      = aws_iam_group.interns-devops.id
+  policy_arn = aws_iam_policy.Interns_CloudFormationWorkshopPolicy.arn
 }
 
 resource "aws_iam_role_policy_attachment" "InternsLambdaWorkshopRole_Attachment" {
