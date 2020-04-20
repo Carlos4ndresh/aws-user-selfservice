@@ -4,26 +4,25 @@
         {
             "Effect": "Allow",
             "Action": [
-                "ec2:*",
-                "imagebuilder:*",
-                "backup:*",
-                "backup-storage:*",
-                "dlm:*",
-                "cloudwatch:*",
-                "s3:*",
-                "launchwizard:*"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
                 "iam:GenerateCredentialReport",
-                "iam:GenerateServiceLastAccessedDetails",
-                "iam:Get*",
                 "iam:List*",
+                "imagebuilder:*",
+                "s3:*",
+                "dlm:*",
+                "iam:GenerateServiceLastAccessedDetails",
+                "backup:*",
+                "iam:Get*",
+                "iam:AttachRolePolicy",
+                "iam:CreateRole",
+                "iam:CreatePolicy",
+                "iam:PutRolePolicy",
+                "iam:PassRole",
+                "iam:SimulatePrincipalPolicy",
                 "iam:SimulateCustomPolicy",
-                "iam:SimulatePrincipalPolicy"
+                "backup-storage:*",
+                "cloudwatch:*",
+                "ec2:*",
+                "launchwizard:*"
             ],
             "Resource": "*"
         }
