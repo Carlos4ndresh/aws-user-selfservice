@@ -165,6 +165,17 @@ user_names = {
     }
   }
 
+  "jorge.herran" = {
+    force_destroy = true
+    email_address     = "Jorge.Herran@endava.com"
+    group_memberships = [ "non_privileged_users", "devops_engineers" ]
+    tags = {
+      deliveryUnit = "Medellin",
+      site = "milla de oro",
+      type = "devops engineer"
+    }
+  }
+
   "juan.hormaza" = {
     force_destroy = true
     email_address     = "JuanSebastian.Hormaza@endava.com"
@@ -204,7 +215,7 @@ user_names = {
   "sebastian.loaiza" = {
     force_destroy = true
     email_address     = "Sebastian.Loaiza@endava.com"
-    group_memberships = [ "non_privileged_users", "developers-routrip", "junior_j2_developers" ]
+    group_memberships = [ "non_privileged_users", "developers-routrip" ]
     tags = {
       deliveryUnit = "Medellin",
       site = "aguacatala",
