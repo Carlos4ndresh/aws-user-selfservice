@@ -147,7 +147,7 @@ resource "aws_iam_policy" "Interns_StorageWorkshopPolicy" {
 }
 
 resource "aws_iam_policy" "Interns_CloudFormationWorkshopPolicy" {
-  name        = "Interns_StorageWorkshopPolicy"
+  name        = "Interns_CloudFormationWorkshopPolicy"
   path        = "/"
   description = "Storage Workshop Temporary Policy for interns"
 
