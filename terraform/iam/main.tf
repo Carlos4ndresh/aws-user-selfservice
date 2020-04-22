@@ -324,36 +324,6 @@ resource "aws_iam_group_policy_attachment" "SystemManager_Mentors" {
 
 # Temporary attachments
 
-resource "aws_iam_group_policy_attachment" "LambdaWorkshopPolicyAttachment_Interns" {
-  group      = aws_iam_group.interns-devops.id
-  policy_arn = aws_iam_policy.Interns_LambdaWorkshopPolicy.arn
-}
-
-resource "aws_iam_group_policy_attachment" "LambdaWorkshopPolicyAttachment_Instructors" {
-  group      = aws_iam_group.devops_engineers.id
-  policy_arn = aws_iam_policy.Interns_LambdaWorkshopPolicy.arn
-}
-
-resource "aws_iam_group_policy_attachment" "StorageWorkshopPolicyAttachment_Instructors" {
-  group      = aws_iam_group.devops_engineers.id
-  policy_arn = aws_iam_policy.Interns_StorageWorkshopPolicy.arn
-}
-
-resource "aws_iam_group_policy_attachment" "StorageWorkshopPolicyAttachment_Interns" {
-  group      = aws_iam_group.interns-devops.id
-  policy_arn = aws_iam_policy.Interns_StorageWorkshopPolicy.arn
-}
-
-resource "aws_iam_group_policy_attachment" "CloudFormationWorkshopPolicyAttachment_Interns" {
-  group      = aws_iam_group.interns-devops.id
-  policy_arn = aws_iam_policy.Interns_CloudFormationWorkshopPolicy.arn
-}
-
-resource "aws_iam_role_policy_attachment" "InternsLambdaWorkshopRole_Attachment" {
-  role       =  aws_iam_role.InternsLambdaWorkshopRole.name
-  policy_arn = aws_iam_policy.Interns_LambdaWorkshopPolicy.arn
-}
-
 resource "aws_iam_group_policy_attachment" "Temporary_Try_Permissions_J2_Attachment" {
   group      = aws_iam_group.junior_j2_developers.id
   policy_arn = aws_iam_policy.Temporary_Try_Permissions_Policy.arn
