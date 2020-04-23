@@ -130,28 +130,12 @@ data "aws_iam_policy" "AWSSSMManagedInstanceCorePolicy" {
 
 ## Temporary policies
 
-resource "aws_iam_policy" "Interns_LambdaWorkshopPolicy" {
-  name        = "Interns_LambdaWorkshopPolicy"
+resource "aws_iam_policy" "Interns_Terraform_Workshop_policy" {
+  name        = "Interns_Terraform_Workshop_policy"
   path        = "/"
-  description = "LambdaWorkshop Temporary Policy for interns"
+  description = "Terraform Workshop Temporary Policy for interns"
 
-  policy = file("${path.module}/policies/Interns_LambdaWorkshopPolicy.json")
-}
-
-resource "aws_iam_policy" "Interns_StorageWorkshopPolicy" {
-  name        = "Interns_StorageWorkshopPolicy"
-  path        = "/"
-  description = "Storage Workshop Temporary Policy for interns"
-
-  policy = file("${path.module}/policies/Interns_AWS_Storage_Workshop_policy.json")
-}
-
-resource "aws_iam_policy" "Interns_CloudFormationWorkshopPolicy" {
-  name        = "Interns_CloudFormationWorkshopPolicy"
-  path        = "/"
-  description = "Storage Workshop Temporary Policy for interns"
-
-  policy = file("${path.module}/policies/Interns_CloudFormation_Workshop_policy.json")
+  policy = file("${path.module}/policies/Interns_Terraform_Workshop_policy.json")
 }
 
 resource "aws_iam_policy" "Temporary_Try_Permissions_Policy" {
@@ -327,6 +311,16 @@ resource "aws_iam_group_policy_attachment" "SystemManager_Mentors" {
 resource "aws_iam_group_policy_attachment" "Temporary_Try_Permissions_J2_Attachment" {
   group      = aws_iam_group.junior_j2_developers.id
   policy_arn = aws_iam_policy.Temporary_Try_Permissions_Policy.arn
+}
+
+resource "aws_iam_group_policy_attachment" "Temporary_TerraformWorkshop_Interns_Attachment" {
+  group      = aws_iam_group.interns-devops.id
+  policy_arn = aws_iam_policy.Interns_Terraform_Workshop_policy.arn
+}
+
+resource "aws_iam_group_policy_attachment" "Temporary_TerraformWorkshop_Speakers_Attachment" {
+  group      = aws_iam_group.devops_engineers.id
+  policy_arn = aws_iam_policy.Interns_Terraform_Workshop_policy.arn
 }
 
 
