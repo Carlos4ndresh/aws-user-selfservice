@@ -10,7 +10,9 @@
                 "ec2:*",
                 "dynamodb:*",
                 "elasticloadbalancing:*",
-                "iam:CreateServiceLinkedRole"
+                "iam:CreateServiceLinkedRole",
+                "cloudwatch:*",
+                "logs:*"
             ],
             "Resource": "*"
         }
