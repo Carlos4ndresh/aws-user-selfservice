@@ -9,3 +9,9 @@ variable "user_names" {
     tags                 = map(string)
   }))
 }
+
+variable "project" {}
+
+variable "owner" {}
+
+variable "env" {}

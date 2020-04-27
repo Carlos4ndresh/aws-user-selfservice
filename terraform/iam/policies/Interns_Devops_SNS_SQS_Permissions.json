@@ -8,6 +8,8 @@
         "sns:CreateTopic",
         "sns:DeleteTopic",
         "sns:GetSubscriptionAttributes",
+        "sns:SetSubscriptionAttributes",
+        "sns:SetTopicAttributes",
         "sns:GetTopicAttributes",
         "sns:ListSubscriptions",
         "sns:ListSubscriptionsByTopic",

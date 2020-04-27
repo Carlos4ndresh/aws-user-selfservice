@@ -8,6 +8,9 @@ module "iam" {
     source = "./iam/"   
     user_names = var.user_names
     provisioner = var.provisioner
+    owner = var.owner
+    env = var.env
+    project = var.project
 }
 
 module "lambda" {

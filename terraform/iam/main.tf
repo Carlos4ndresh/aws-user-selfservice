@@ -127,6 +127,22 @@ data "aws_iam_policy" "AWSSSMManagedInstanceCorePolicy" {
   arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
+resource "aws_iam_policy" "Interns_EC2_Project_Policy" {
+  name        = "Interns_EC2_Project_Policy"
+  path        = "/"
+  description = "Policy for the creation of resources for the internship project 2020-i"
+
+  policy = file("${path.module}/policies/Interns_EC2_Project_policy.json")
+}
+
+resource "aws_iam_policy" "Interns_Lambda_Project_policy" {
+  name        = "Interns_Lambda_Project_policy"
+  path        = "/"
+  description = "Policy for the creation of resources for the internship project 2020-i"
+
+  policy = file("${path.module}/policies/Interns_Lambda_Project_policy.json")
+}
+
 
 ## Temporary policies
 
@@ -171,12 +187,11 @@ resource "aws_iam_role" "user_creation_lambda_role" {
 EOF
 
   tags = {
-      env = "Production",
+      env = var.env,
       Provisioner = var.provisioner,
-      owner = "carlos.herrera",
-      project = "Infrastructure Manager"
+      owner = var.owner,
+      project = var.project
   }
-
 }
 
 resource "aws_iam_role" "EC2_CodeCommit_ReadOnly_role" {
@@ -199,10 +214,10 @@ resource "aws_iam_role" "EC2_CodeCommit_ReadOnly_role" {
 EOF
 
   tags = {
-      env = "Production",
+      env = var.env,
       Provisioner = var.provisioner,
-      owner = "carlos.herrera",
-      project = "Infrastructure Manager"
+      owner = var.owner,
+      project = var.project
   }
 }
 
@@ -230,10 +245,10 @@ resource "aws_iam_role" "InternsLambdaWorkshopRole" {
 EOF
 
   tags = {
-      env = "Production",
+      env = var.env,
       Provisioner = var.provisioner,
-      owner = "carlos.herrera",
-      project = "Infrastructure Manager"
+      owner = var.owner,
+      project = var.project
   }
 
 }
