@@ -321,6 +321,16 @@ resource "aws_iam_group_policy_attachment" "SystemManager_Mentors" {
   policy_arn = aws_iam_policy.Mentors_SSM_SessionManager_Policy.arn
 }
 
+resource "aws_iam_group_policy_attachment" "Interns_Devops_Project_EC2_Attachment" {
+  group      = aws_iam_group.interns-devops.id
+  policy_arn = aws_iam_policy.Interns_EC2_Project_Policy.arn
+}
+
+resource "aws_iam_group_policy_attachment" "Interns_Devops_Project_Lambda_Attachment" {
+  group      = aws_iam_group.interns-devops.id
+  policy_arn = aws_iam_policy.Interns_Lambda_Project_policy.arn
+}
+
 # Temporary attachments
 
 resource "aws_iam_group_policy_attachment" "Temporary_Try_Permissions_J2_Attachment" {
