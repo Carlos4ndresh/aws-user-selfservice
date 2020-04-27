@@ -50,10 +50,10 @@ module "s3_resources" {
     region = var.region
 }
 
-# module "cf_stack" {
-#     source = "./cloudformation_stacks"
-#     project = var.project
-#     provisioner = var.provisioner
-#     owner = var.owner
-#     env = var.env
-# }
+module "cf_stack" {
+    source = "./cloudformation_stacks"
+    project = var.project
+    provisioner = var.provisioner
+    owner = var.owner
+    env = var.env
+}
