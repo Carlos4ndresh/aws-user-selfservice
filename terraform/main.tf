@@ -49,3 +49,11 @@ module "s3_resources" {
     env = var.env
     region = var.region
 }
+
+module "cf_stack" {
+    source = "./cloudformation_stacks"
+    project = var.project
+    provisioner = var.provisioner
+    owner = var.owner
+    env = var.env
+}

@@ -25,3 +25,7 @@ output "s3_log_bucket" {
 # output "user_password" {
 #   value = module.iam.user_password
 # }
+
+output "cloudformation_output" {
+    value = module.cf_stack.instance_scheduler_outputs
+}
