@@ -6,7 +6,7 @@ resource "aws_cloudformation_stack" "instance_scheduler_stack" {
     owner = var.owner,
     project = var.project,
     provisioner = var.provisioner,
-    env = var.env,
+    env = var.env
   }
 
   parameters = {
@@ -40,7 +40,7 @@ resource "aws_cloudformation_stack" "SchedulerCustomResource" {
     owner = var.owner,
     project = var.project,
     provisioner = var.provisioner,
-    env = var.env,
+    env = var.env
   }
 
   template_body = <<STACK
