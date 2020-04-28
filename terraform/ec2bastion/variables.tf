@@ -15,3 +15,5 @@ variable "instance_profile" {}
 variable "subnet_id" {}
 
 variable "s3_logs_bucket" {}
+
+variable "scheduler_tag" {}

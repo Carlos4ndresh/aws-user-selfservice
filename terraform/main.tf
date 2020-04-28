@@ -39,6 +39,7 @@ module "ec2" {
     instance_profile = module.iam.ec2_instance_profile
     subnet_id = module.vpc.subnet_id
     s3_logs_bucket = module.s3_resources.log_bucket_name
+    scheduler_tag = var.scheduler_tag
 }
 
 module "s3_resources" {

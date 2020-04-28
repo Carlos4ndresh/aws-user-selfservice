@@ -41,3 +41,8 @@ variable "key_pair" {
   type = string
   default = "ec2bastionkey"
 }
+
+variable "scheduler_tag" {
+  type = string
+  default = "MED-OfficeHours"
+}

@@ -34,6 +34,7 @@ resource "aws_instance" "ec2_bastion" {
     project = var.project,
     provisioner = var.provisioner,
     env = var.env,
+    InstanceSchedule = var.scheduler_tag,
     Name = "CodeCommitBastion"
   }
 }
