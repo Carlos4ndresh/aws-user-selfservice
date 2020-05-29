@@ -1,0 +1,73 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "SQSReadAccess",
+      "Action": [
+        "sqs:ChangeMessageVisibility",
+        "sqs:DeleteMessage",
+        "sqs:DeleteMessageBatch",
+        "sqs:GetQueueAttributes",
+        "sqs:GetQueueUrl",
+        "sqs:ListDeadLetterSourceQueues",
+        "sqs:ListQueueTags",
+        "sqs:ReceiveMessage",
+        "sqs:SendMessage",
+        "sqs:SendMessageBatch"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:sqs:us-east-1:account:cloudcustodian_mailer_queue"
+    },
+    {
+      "Sid": "CloudwatchLogsManagement",
+      "Action": [
+        "logs:CreateLogDelivery",
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:DeleteLogDelivery",
+        "logs:DescribeLogStreams",
+        "logs:DeleteLogGroup",
+        "logs:DeleteLogStream",
+        "logs:DescribeLogGroups",
+        "logs:DescribeLogStreams",
+        "logs:PutLogEvents",
+        "logs:PutRetentionPolicy"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "SESPermissions",
+      "Action": [
+        "ses:CreateTemplate",
+        "ses:DescribeActiveReceiptRuleSet",
+        "ses:DescribeConfigurationSet",
+        "ses:DescribeReceiptRule",
+        "ses:DescribeReceiptRuleSet",
+        "ses:GetAccountSendingEnabled",
+        "ses:GetCustomVerificationEmailTemplate",
+        "ses:GetSendQuota",
+        "ses:GetSendStatistics",
+        "ses:GetTemplate",
+        "ses:ListConfigurationSets",
+        "ses:ListCustomVerificationEmailTemplates",
+        "ses:ListIdentities",
+        "ses:ListIdentityPolicies",
+        "ses:ListReceiptFilters",
+        "ses:ListReceiptRuleSets",
+        "ses:ListTemplates",
+        "ses:ListVerifiedEmailAddresses",
+        "ses:SendBounce",
+        "ses:SendBulkTemplatedEmail",
+        "ses:SendCustomVerificationEmail",
+        "ses:SendEmail",
+        "ses:SendRawEmail",
+        "ses:SendTemplatedEmail",
+        "ses:TestRenderTemplate",
+        "ses:UpdateTemplate"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}

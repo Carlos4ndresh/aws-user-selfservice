@@ -1,0 +1,31 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [        
+        "iam:CreateLoginProfile",
+        "iam:CreateUser",
+        "iam:TagUser"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:iam::*:user/*"
+    },
+    {
+      "Action": [
+        "iam:AddUserToGroup"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:iam::*:group/*"
+    },
+    {
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+        "logs:TagLogGroup"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}

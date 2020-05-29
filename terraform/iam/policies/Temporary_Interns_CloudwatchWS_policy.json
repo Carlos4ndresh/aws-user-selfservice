@@ -1,0 +1,108 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "IamPermissionsForCloudFormation",
+      "Action": [
+        "iam:AddRoleToInstanceProfile",
+        "iam:AttachRolePolicy",
+        "iam:CreateRole",
+        "iam:CreateServiceLinkedRole",
+        "iam:DeleteInstanceProfile",
+        "iam:DeleteRole",
+        "iam:DeleteRolePolicy",
+        "iam:DeleteServiceLinkedRole",
+        "iam:DetachRolePolicy",
+        "iam:GetAccessKeyLastUsed",
+        "iam:GetInstanceProfile",
+        "iam:GetPolicy",
+        "iam:GetPolicyVersion",
+        "iam:GetRole",
+        "iam:GetRolePolicy",
+        "iam:ListAccessKeys",
+        "iam:ListAttachedRolePolicies",
+        "iam:ListInstanceProfiles",
+        "iam:ListInstanceProfilesForRole",
+        "iam:ListPolicies",
+        "iam:ListRolePolicies",
+        "iam:ListRoleTags",
+        "iam:ListRoles",
+        "iam:PassRole",
+        "iam:PutRolePolicy",
+        "iam:TagRole",
+        "iam:UntagRole",
+        "iam:UpdateRole",
+        "iam:UpdateRoleDescription",
+        "iam:CreateInstanceProfile",
+        "iam:RemoveRoleFromInstanceProfile"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "LambdaFullPermissions",
+      "Action": "lambda:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "CloudTrailFullAccess",
+      "Action": "cloudtrail:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "CloudwatchFullAccess",
+      "Action": "cloudwatch:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "CloudWatchLogsFullAccess",
+      "Action": "logs:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "S3Permissions",
+      "Action": [
+        "s3:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "CloudFormationFullAccess",
+      "Action": "cloudformation:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+        "Sid": "EC2FullAccess",
+        "Action": "ec2:*",
+        "Effect": "Allow",
+        "Resource": "*"
+    },
+    {
+      "Sid": "eventspermissions",
+      "Action": [
+        "events:DeleteRule",
+        "events:DescribeRule",
+        "events:DisableRule",
+        "events:EnableRule",
+        "events:ListRuleNamesByTarget",
+        "events:ListRules",
+        "events:ListTagsForResource",
+        "events:ListTargetsByRule",
+        "events:PutEvents",
+        "events:PutPermission",
+        "events:PutRule",
+        "events:PutTargets",
+        "events:RemovePermission",
+        "events:RemoveTargets"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}

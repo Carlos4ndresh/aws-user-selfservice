@@ -1,0 +1,44 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Sid": "CloudWatchLogAccess",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "logs:DescribeLogGroups",
+                "logs:DescribeLogStreams"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectAcl",
+                "s3:GetObjectLegalHold",
+                "s3:GetObjectTagging",
+                "s3:GetObjectVersionAcl",
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionAcl"
+
+            ],
+            "Resource": "arn:aws:s3:::endava-med-bucket-log-audit/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetEncryptionConfiguration"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "kms:GenerateDataKey",
+            "Resource": "*"
+        }
+    ]
+}

@@ -1,0 +1,126 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "FullIAMAccess",
+      "Action": "iam:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "FullLambdaAccess",
+      "Action": "lambda:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "S3CodePipelineAccess",
+      "Action": [
+        "s3:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "kmsCodePipelineFullAccess",
+      "Action": [
+        "kms:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "CodeBuildFullAccessOnSelf",
+      "Action": "codebuild:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "CodePipelineAccesss",
+      "Action": [
+        "codepipeline:GetPipeline",
+        "codepipeline:ListTagsForResource"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "CloudwatchLogsManagement",
+      "Action": [
+        "logs:CreateLogDelivery",
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:DeleteLogDelivery",
+        "logs:DescribeLogStreams",
+        "logs:DeleteLogGroup",
+        "logs:DeleteLogStream",
+        "logs:DescribeLogGroups",
+        "logs:DescribeLogStreams",
+        "logs:PutLogEvents",
+        "logs:PutRetentionPolicy"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "CloudWatchAndEventsFullAccess",
+      "Action": [
+        "cloudwatch:*",
+        "events:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "EC2FullAccess",
+      "Action": "ec2:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "SSMFullAccess",
+      "Action": "ssm:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "CloudFormationFullAccess",
+      "Action": "cloudformation:*",
+      "Effect": "Allow",
+      "Resource": "*"      
+    },
+    {
+      "Sid": "DynamoDBFullAccess",
+      "Action": "dynamodb:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "RDSFullAccess",
+      "Action": "rds:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "SNSFullAccess",
+      "Action": "sns:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "SQSFullAccess",
+      "Action": "sqs:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "SSMAndTagFullAccess",
+      "Action": [
+        "ssm:*",
+        "tag:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}

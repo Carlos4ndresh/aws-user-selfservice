@@ -1,0 +1,57 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ReadOnlyAccessToRepos",
+            "Effect": "Allow",
+            "Action": [
+                "codecommit:BatchGet*",
+                "codecommit:BatchDescribe*",
+                "codecommit:Describe*",
+                "codecommit:EvaluatePullRequestApprovalRules",
+                "codecommit:Get*",
+                "codecommit:List*",
+                "codecommit:GitPull"
+            ],
+            "Resource": [
+                "arn:aws:codecommit:us-east-1:account:WeCruit-Backend",
+                "arn:aws:codecommit:us-east-1:account:WeCruit-Frontend",
+                "arn:aws:codecommit:us-east-1:account:WeCruit-Devops"
+            ]
+        },
+        {
+            "Sid": "ReadOnlyAccessToPipelines",
+            "Action": [
+                "codepipeline:GetPipeline",
+                "codepipeline:GetPipelineState",
+                "codepipeline:GetPipelineExecution",
+                "codepipeline:ListPipelineExecutions",
+                "codepipeline:ListActionExecutions",
+                "codepipeline:ListActionTypes",
+                "codepipeline:ListPipelines",
+                "codepipeline:ListTagsForResource",
+                "codedeploy:GetApplication",
+                "codedeploy:GetDeploymentGroup",
+                "codedeploy:ListApplications",
+                "codedeploy:ListDeploymentGroups"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Sid": "TagAndResourceGroupAccess",
+            "Action": [
+                "resource-groups:*",
+                "cloudformation:DescribeStackResources",
+                "cloudformation:ListStackResources",
+                "tag:GetResources",
+                "tag:TagResources",
+                "tag:UntagResources",
+                "tag:getTagKeys",
+                "tag:getTagValues"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

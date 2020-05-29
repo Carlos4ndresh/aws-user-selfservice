@@ -1,0 +1,20 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "rds:*",
+                "s3:*",
+                "ec2:*",
+                "dynamodb:*",
+                "elasticloadbalancing:*",
+                "iam:CreateServiceLinkedRole",
+                "cloudwatch:*",
+                "logs:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

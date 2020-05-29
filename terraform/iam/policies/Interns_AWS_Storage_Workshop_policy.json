@@ -1,0 +1,30 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:GenerateCredentialReport",
+                "iam:List*",
+                "imagebuilder:*",
+                "s3:*",
+                "dlm:*",
+                "iam:GenerateServiceLastAccessedDetails",
+                "backup:*",
+                "iam:Get*",
+                "iam:AttachRolePolicy",
+                "iam:CreateRole",
+                "iam:CreatePolicy",
+                "iam:PutRolePolicy",
+                "iam:PassRole",
+                "iam:SimulatePrincipalPolicy",
+                "iam:SimulateCustomPolicy",
+                "backup-storage:*",
+                "cloudwatch:*",
+                "ec2:*",
+                "launchwizard:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
